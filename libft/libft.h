@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 19:00:36 by aridolfi          #+#    #+#             */
-/*   Updated: 2016/12/14 10:56:32 by aridolfi         ###   ########.fr       */
+/*   Updated: 2016/12/18 18:27:25 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <string.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <wchar.h>
 
 typedef struct	s_list
 {
@@ -107,5 +108,8 @@ void			ft_int_tab_bubble(int *tab, size_t size);
 int				ft_strfind(const char *s, int c);
 
 int				get_next_line(const int fd, char **line);
+
+void			ft_putwchar_fd(wchar_t c, int fd);
+void			ft_putwchar(wchar_t chr);
 
 #endif

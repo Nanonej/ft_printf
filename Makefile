@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2016/12/14 14:07:41 by aridolfi         ###   ########.fr        #
+#    Updated: 2016/12/18 18:33:38 by aridolfi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,8 @@ SRCS 	=	libft/ft_atoi.c				\
 			libft/ft_putnbr.c			\
 			libft/ft_putstr_fd.c		\
 			libft/ft_putstr.c			\
+			libft/ft_putwchar_fd.c		\
+			libft/ft_putwchar.c			\
 			libft/ft_strcat.c			\
 			libft/ft_strchr.c			\
 			libft/ft_strclr.c			\
@@ -112,12 +114,11 @@ LOG_WHITE		= \033[1;37m
 
 # Bonus
 
-.PHONY:		all clean fclean re
+.PHONY:		clean
 
 # **************************************************************************** #
 
 # Rules
-
 all: $(NAME)
 
 $(NAME): $(OBJT)
@@ -126,7 +127,7 @@ $(NAME): $(OBJT)
 
 %.o: %.c
 	@echo "--$(LOG_CLEAR)$(LOG_GREEN)$(NAME)$(LOG_NOCOLOR) ........................ $(LOG_VIOLET)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $(CFLAGS) $(ADDFLAGS) -c -o $@ $^
+	@$(CC) $(CFLAGS) $(ADDFLAGS) -c -o $@ $^ -I ./libft -I ./printf
 
 clean:
 	@rm -f $(OBJT)
