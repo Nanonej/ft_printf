@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/03 16:55:24 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/03 17:04:33 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int		ft_printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	va_start(ap, format);
-	while (format[i] != '\0')
+	while (format[i])
 	{
 		buff = buff_until(format, &i);
-		if (buff[i])
+		if (format[i])
 			buff = buff_conv(format, ap, &i);
 	}
 	va_end(ap);
