@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/04 17:27:44 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/04 17:38:55 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ char	*buff_until(char *buff, char *format, int *i)
 
 char	*buff_conv(char *buff, char *format, va_list ap, int *i)
 {
+	t_opt	form_arg;
+
+	clear_t_opt(&form_arg);
+	check_opt(&form_arg, buff, i);
+	check_len_prec(&form_arg, buff, i, 0);
+	check_mod(&form_arg, buff, i);
 	return (NULL);
 }
 
