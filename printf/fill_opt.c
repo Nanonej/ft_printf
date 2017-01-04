@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:09:13 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/04 17:29:10 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/04 17:33:47 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,6 @@ void		check_mod(t_opt *form_arg, char *buff, int *i)
 	while (buff[*i] == 'h' || buff[*i] == 'l' || buff[*i] == 'j' \
 	|| buff[*i] == 'z')
 	{
-		if (count == 1 && ((buff[*i] == 'l' && buff[(*i) - 1] != 'l') ||
-		(buff[*i] == 'h' && buff[(*i) - 1] != 'h') || buff[*i] == 'j' ||
-		buff[*i] == 'z'))
-			break ;
 		tmp[count] = buff[*i];
 		count++;
 		(*i)++;
