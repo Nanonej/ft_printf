@@ -6,20 +6,32 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:09:13 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/04 16:55:53 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/04 17:29:10 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void 		fill_t_opt(t_opt *form_arg, char *buff, int *i)
+void		clear_t_opt(t_opt *form_arg)
+{
+	form_arg->minus = '0';
+	form_arg->plus = '0';
+	form_arg->zero = '0';
+	form_arg->space = '0';
+	form_arg->hash = '0';
+	form_arg->len = 0;
+	form_arg->prec = 0;
+	form_arg->mod = NULL;
+}
+
+void		fill_t_opt(t_opt *form_arg, char *buff, int *i)
 {
 	check_opt(form_arg, buff, i);
 	check_len_prec(form_arg, buff, i, 0);
 	check_mod(form_arg, buff, i);
 }
 
-void 		check_opt(t_opt *form_arg, char *buff, int *i)
+void		check_opt(t_opt *form_arg, char *buff, int *i)
 {
 	while (buff[*i] == '-' || buff[*i] == '+' || buff[*i] == '0'\
 	|| buff[*i] == ' ' || buff[*i] == '#')
@@ -38,7 +50,7 @@ void 		check_opt(t_opt *form_arg, char *buff, int *i)
 	}
 }
 
-void 		check_len_prec(t_opt *form_arg, char *buff, int *i, int ftbool)
+void		check_len_prec(t_opt *form_arg, char *buff, int *i, int ftbool)
 {
 	int		n;
 	int		count;
@@ -67,22 +79,26 @@ void 		check_len_prec(t_opt *form_arg, char *buff, int *i, int ftbool)
 	}
 }
 
-void	check_mod(t_opt *form_arg, char *buff, int *i)
+void		check_mod(t_opt *form_arg, char *buff, int *i)
 {
 	char	*tmp;
 	int		count;
 
 	count = 0;
 	tmp = ft_strnew(2);
+	check_alloc(tmp);
 	while (buff[*i] == 'h' || buff[*i] == 'l' || buff[*i] == 'j' \
 	|| buff[*i] == 'z')
 	{
-		if (count == 1 && ((buff[*i] == 'l' && buff[(*i) - 1] != 'l') || (buff[*i] == 'h' && buff[(*i) - 1] != 'h') || buff[*i] == 'j' || buff[*i] == 'z'))
+		if (count == 1 && ((buff[*i] == 'l' && buff[(*i) - 1] != 'l') ||
+		(buff[*i] == 'h' && buff[(*i) - 1] != 'h') || buff[*i] == 'j' ||
+		buff[*i] == 'z'))
 			break ;
 		tmp[count] = buff[*i];
 		count++;
 		(*i)++;
 	}
 	form_arg->mod = ft_strdup(tmp);
+	check_alloc(form_arg->mod);
 	free(tmp);
 }

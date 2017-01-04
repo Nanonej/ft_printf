@@ -6,11 +6,11 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/04 16:56:44 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/04 17:24:33 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf/ft_printf.h"
 #include <stdio.h>
 int				main(void)
 {

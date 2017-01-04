@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2017/01/04 15:59:40 by lchim            ###   ########.fr        #
+#    Updated: 2017/01/04 17:23:44 by lchim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= libftprintf.a
 
 # Compilation
 CC		= cc
-CFLAGS	= 
+CFLAGS	=
 
 # Directories
 LIBDIR	= libft
@@ -91,7 +91,8 @@ SRCS 	=	libft/ft_atoi.c				\
 			libft/ft_toupper.c			\
 			libft/get_next_line.c		\
 			\
-			printf/ft_printf.c
+			printf/ft_printf.c			\
+			printf/fill_opt.c			\
 
 OBJT	= $(SRCS:.c=.o)
 
