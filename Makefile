@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2016/12/18 18:33:38 by aridolfi         ###   ########.fr        #
+#    Updated: 2017/01/04 15:59:40 by lchim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= libftprintf.a
 
 # Compilation
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= 
 
 # Directories
 LIBDIR	= libft

@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/04 14:09:51 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/04 16:04:56 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		ft_printf(const char *format, ...)
 	check_alloc((void *)buff);
 	while (format[i])
 	{
-		buff = buff_until(buff, format, &i);
+		buff = buff_until(buff, (char *)format, &i);
 		if (format[i])
-			buff = buff_conv(buff, format, ap, &i);
+			buff = buff_conv(buff, (char *)format, ap, &i);
 	}
 	va_end(ap);
 	return (0);
@@ -45,6 +45,7 @@ char	*buff_until(char *buff, char *format, int *i)
 
 char	*buff_conv(char *buff, char *format, va_list ap, int *i)
 {
+	return (NULL);
 }
 
 void 	check_alloc(void *ptr)
@@ -55,11 +56,11 @@ void 	check_alloc(void *ptr)
 
 void	clear_t_opt(t_opt *form_arg)
 {
-	form_arg->minus = 0;
-	form_arg->plus = 0;
-	form_arg->zero = 0;
-	form_arg->space = 0;
-	form_arg->hash = 0;
+	form_arg->minus = '0';
+	form_arg->plus = '0';
+	form_arg->zero = '0';
+	form_arg->space = '0';
+	form_arg->hash = '0';
 	form_arg->len = 0;
 	form_arg->prec = 0;
 	form_arg->mod = NULL;
