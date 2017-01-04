@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/03 17:04:33 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/04 13:39:08 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,36 @@ int		ft_printf(const char *format, ...)
 	int		i;
 
 	i = 0;
-	if (!format)
-		return (-1);
 	va_start(ap, format);
+	buff = ft_strnew(0);
+	check_alloc((void *)buff);
 	while (format[i])
 	{
-		buff = buff_until(format, &i);
+		buff = buff_until(buff, format, &i);
 		if (format[i])
-			buff = buff_conv(format, ap, &i);
+			buff = buff_conv(buff, format, ap, &i);
 	}
 	va_end(ap);
 	return (0);
 }
 
-char	*buff_until(char *format, int *i)
+char	*buff_until(char *buff, char *format, int *i)
 {
 	char *tmp;
 
-	tmp = ft_strsub(format, *i, ft_strfind(format, '%'))
-	*i = ft_strlen(tmp);
+	tmp = ft_strjoin(buff, ft_strsub(format, *i, ft_strfind(format, '%')));
+	check_alloc((void *)tmp);
+	*i = ft_strlen(ft_strsub(format, *i, ft_strfind(format, '%')));
+	free(buff);
 	return (tmp);
 }
 
-char	*buff_conv(char *format, va_list ap, int *i)
+char	*buff_conv(char *buff, char *format, va_list ap, int *i)
 {
+}
 
+void 	check_alloc(void *ptr)
+{
+	if (!ptr)
+		exit(EXIT_FAILURE);
 }
