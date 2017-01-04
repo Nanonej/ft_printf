@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/04 13:39:08 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/04 14:02:32 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,16 @@ void 	check_alloc(void *ptr)
 {
 	if (!ptr)
 		exit(EXIT_FAILURE);
+}
+
+void	clear_t_opt(t_opt *form_arg)
+{
+	form_arg->minus = 0;
+	form_arg->plus = 0;
+	form_arg->zero = 0;
+	form_arg->space = 0;
+	form_arg->hash = 0;
+	form_arg->len = 0;
+	form_arg->prec = 0;
+	form_arg->mod = NULL;
 }
