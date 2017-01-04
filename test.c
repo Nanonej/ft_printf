@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/03 15:46:09 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/04 17:16:59 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		main(void)
 	printf("Test 28 - %%jd: %jd\n", (intmax_t)42);
 	printf("Test 29 - %%zd: %zd\n\n", (size_t)42);
 
-	printf("Test 30 - %%024-d: %024-d\n\n", 42);
+	printf("Test WTF DUDE ?!: %d\n\n", 42);
 
 	return (0);
 }

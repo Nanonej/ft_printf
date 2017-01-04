@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:09:13 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/04 16:14:06 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/04 16:55:53 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void 		fill_t_opt(t_opt *form_arg, char *buff, int *i)
 {
 	check_opt(form_arg, buff, i);
 	check_len_prec(form_arg, buff, i, 0);
+	check_mod(form_arg, buff, i);
 }
 
 void 		check_opt(t_opt *form_arg, char *buff, int *i)
 {
-	while (buff[*i] == '-' || buff[*i] == '+' || buff[*i] == '0'
+	while (buff[*i] == '-' || buff[*i] == '+' || buff[*i] == '0'\
 	|| buff[*i] == ' ' || buff[*i] == '#')
 	{
 		if (buff[*i] == '-')
@@ -64,4 +65,24 @@ void 		check_len_prec(t_opt *form_arg, char *buff, int *i, int ftbool)
 		(*i)++;
 		check_len_prec(form_arg, buff, i, 1);
 	}
+}
+
+void	check_mod(t_opt *form_arg, char *buff, int *i)
+{
+	char	*tmp;
+	int		count;
+
+	count = 0;
+	tmp = ft_strnew(2);
+	while (buff[*i] == 'h' || buff[*i] == 'l' || buff[*i] == 'j' \
+	|| buff[*i] == 'z')
+	{
+		if (count == 1 && ((buff[*i] == 'l' && buff[(*i) - 1] != 'l') || (buff[*i] == 'h' && buff[(*i) - 1] != 'h') || buff[*i] == 'j' || buff[*i] == 'z'))
+			break ;
+		tmp[count] = buff[*i];
+		count++;
+		(*i)++;
+	}
+	form_arg->mod = ft_strdup(tmp);
+	free(tmp);
 }
