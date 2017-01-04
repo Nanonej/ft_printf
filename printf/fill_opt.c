@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:09:13 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/04 17:41:47 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/04 18:33:30 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ void		start_opt(t_opt *form_arg, char *buff, int *i)
 	form_arg->len = 0;
 	form_arg->prec = 0;
 	form_arg->mod = NULL;
+	form_arg->conv = '0';
 	check_opt(form_arg, buff, i);
 	check_len_prec(form_arg, buff, i, 0);
 	check_mod(form_arg, buff, i);
+	form_arg->conv = buff[(*i)++];
 }
 
 void		check_opt(t_opt *form_arg, char *buff, int *i)

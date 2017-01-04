@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/04 17:41:45 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/04 18:29:14 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_opt
 	int			len;
 	int			prec;
 	char		*mod;
+	char		conv;
 }				t_opt;
 
 // typedef 		int	(*t_ptf)(va_list ap);
