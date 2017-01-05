@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv.c                                             :+:      :+:    :+:   */
+/*   str_conv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/04 14:19:33 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/04 16:18:22 by aridolfi         ###   ########.fr       */
+/*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
+/*   Updated: 2017/01/05 16:34:08 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_ptf	*ft_type(void)
-{
-	static t_ptf p[14];
+int		ft_conv_s(va_list ap)
+{	char *tmp;
 
-	p[0] =
-	p[1] =
-	p[2] =
-	p[3] =
-	p[4] =
-	p[5] =
-	p[6] =
-	p[7] =
-	p[8] =
-	p[9] =
-	p[10] =
-	p[11] =
-	p[12] =
-	p[13] =
+	tmp = buff;
+	buff = ft_strjoin(buff, va_arg(ap, char*));
+	check_alloc((void *)buff);
+	free(tmp);
+	return (0);
 }
