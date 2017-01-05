@@ -6,13 +6,13 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:19:33 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/05 16:28:47 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/05 17:23:01 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_type(void)
+void	ft_type(int (**p)(char*, char**, va_list))
 {
 	int (*p[14]) (char *buff, char **format, va_list ap);
 
@@ -30,5 +30,4 @@ int		ft_type(void)
 	p[11] = ft_conv_x;
 	p[12] = ft_conv_c;
 	p[13] = ft_conv_uc;
-	return (0);
 }
