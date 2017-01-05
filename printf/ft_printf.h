@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/05 14:05:18 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/05 14:23:44 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_opt
 
 int				ft_printf(const char *format, ...);
 char			*buff_until(char *buff, char **format);
+char			*buff_conv(char *buff, char **format);
 
 int				start_opt(t_opt *form_arg, char **format);
 void			clear_opt(t_opt *form_arg);
