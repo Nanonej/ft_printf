@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:09:13 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/05 14:15:11 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/05 15:35:30 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ int			start_opt(t_opt *form_arg, char **format)
 	check_len_prec(form_arg, format, 0);
 	check_mod(form_arg, format);
 	if (check_conv((form_arg->conv = **format)) == 1)
-	{
-		form_arg->conv = 0;
 		return (1);
-	}
 	(*format)++;
 	return (0);
 }
@@ -98,6 +95,7 @@ void		check_mod(t_opt *form_arg, char **format)
 	if (count == 1 || count == 2)
 	{
 		tmp = ft_strsub(*format, 0, count);
+		check_alloc((void *)tmp);
 		form_arg->mod = tmp;
 	}
 	if (count == 2 && (!ft_strequ(form_arg->mod, "ll") && \

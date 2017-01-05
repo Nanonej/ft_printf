@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/05 14:23:34 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/05 15:34:24 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int		ft_printf(const char *format, ...)
 {
+	va_list	ap;
 	char	*buff;
 
 	buff = ft_strnew(0);
 	check_alloc((void *)buff);
+	va_start(ap, format);
 	while (*format)
 	{
 		buff = buff_until(buff, (char **)&format);
@@ -27,7 +29,8 @@ int		ft_printf(const char *format, ...)
 			if (buff == NULL)
 				return (-1);
 		}
-}
+	}
+	va_end(ap);
 	return (0);
 }
 
@@ -58,5 +61,5 @@ char	*buff_conv(char *buff, char **format)
 
 	if (start_opt(&form_arg, format) == 1)
 		return (NULL);
-	
+	return (buff);
 }
