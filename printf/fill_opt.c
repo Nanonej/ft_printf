@@ -6,13 +6,28 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 14:09:13 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/04 18:33:30 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/05 14:15:11 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		start_opt(t_opt *form_arg, char *buff, int *i)
+int			start_opt(t_opt *form_arg, char **format)
+{
+	clear_opt(form_arg);
+	check_opt(form_arg, format);
+	check_len_prec(form_arg, format, 0);
+	check_mod(form_arg, format);
+	if (check_conv((form_arg->conv = **format)) == 1)
+	{
+		form_arg->conv = 0;
+		return (1);
+	}
+	(*format)++;
+	return (0);
+}
+
+void		clear_opt(t_opt *form_arg)
 {
 	form_arg->minus = '0';
 	form_arg->plus = '0';
@@ -22,77 +37,74 @@ void		start_opt(t_opt *form_arg, char *buff, int *i)
 	form_arg->len = 0;
 	form_arg->prec = 0;
 	form_arg->mod = NULL;
-	form_arg->conv = '0';
-	check_opt(form_arg, buff, i);
-	check_len_prec(form_arg, buff, i, 0);
-	check_mod(form_arg, buff, i);
-	form_arg->conv = buff[(*i)++];
+	form_arg->conv = 0;
 }
 
-void		check_opt(t_opt *form_arg, char *buff, int *i)
+void		check_opt(t_opt *form_arg, char **format)
 {
-	while (buff[*i] == '-' || buff[*i] == '+' || buff[*i] == '0'\
-	|| buff[*i] == ' ' || buff[*i] == '#')
+	while (**format == '-' || **format == '+' || **format == '0' || \
+	**format == ' ' || **format == '#')
 	{
-		if (buff[*i] == '-')
+		if (**format == '-')
 			form_arg->minus = '1';
-		else if (buff[*i] == '+')
+		else if (**format == '+')
 			form_arg->plus = '1';
-		else if (buff[*i] == '0')
+		else if (**format == '0')
 			form_arg->zero = '1';
-		else if (buff[*i] == ' ')
+		else if (**format == ' ')
 			form_arg->space = '1';
-		else if (buff[*i] == '#')
+		else if (**format == '#')
 			form_arg->hash = '1';
-		(*i)++;
+		(*format)++;
 	}
 }
 
-void		check_len_prec(t_opt *form_arg, char *buff, int *i, int ftbool)
+void		check_len_prec(t_opt *form_arg, char **format, int ftbool)
 {
-	int		n;
+	int		nb;
 	int		count;
-	int		tmp;
 
-	if (buff[*i] >= '0' && buff[*i] <= '9')
+	if (**format >= '0' && **format <= '9')
 	{
-		n = *i;
-		count = ft_atoi(&buff[n]);
-		tmp = 0;
-		while (count)
-		{
-			count /= 10;
-			tmp++;
-		}
-		*i += tmp;
-		if (ftbool == 0)
-			form_arg->len = ft_atoi(&buff[n]);
+		count = 1;
+		nb = ft_atoi(*format);
+		while ((nb /= 10) != 0)
+			count++;
+		if (!ftbool)
+			form_arg->len = ft_atoi(*format);
 		else
-			form_arg->prec = ft_atoi(&buff[n]);
+			form_arg->prec = ft_atoi(*format);
+		*format += count;
 	}
-	if (buff[*i] == '.')
+	if (**format == '.')
 	{
-		(*i)++;
-		check_len_prec(form_arg, buff, i, 1);
+		(*format)++;
+		check_len_prec(form_arg, format, 1);
 	}
 }
 
-void		check_mod(t_opt *form_arg, char *buff, int *i)
+void		check_mod(t_opt *form_arg, char **format)
 {
-	char	*tmp;
 	int		count;
+	char	*tmp;
 
 	count = 0;
-	tmp = ft_strnew(2);
-	check_alloc(tmp);
-	while (buff[*i] == 'h' || buff[*i] == 'l' || buff[*i] == 'j' \
-	|| buff[*i] == 'z')
+	tmp = *format;
+	while (*tmp == 'j' || *tmp == 'z' || *tmp == 'h' || *tmp == 'l')
 	{
-		tmp[count] = buff[*i];
 		count++;
-		(*i)++;
+		tmp++;
 	}
-	form_arg->mod = ft_strdup(tmp);
-	check_alloc(form_arg->mod);
-	free(tmp);
+	if (count == 1 || count == 2)
+	{
+		tmp = ft_strsub(*format, 0, count);
+		form_arg->mod = tmp;
+	}
+	if (count == 2 && (!ft_strequ(form_arg->mod, "ll") && \
+	!ft_strequ(form_arg->mod, "hh")))
+	{
+		free(form_arg->mod);
+		form_arg->mod = NULL;
+	}
+	*format += count;
 }
