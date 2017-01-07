@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 17:43:19 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 17:49:33 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_printf(const char *format, ...)
 	va_list	ap;
 	char	*buff;
 	char	*(*p[14]) (va_list ap);
+	int		i;
 
 	buff = ft_strnew(0);
 	check_alloc((void *)buff);
@@ -33,9 +34,10 @@ int		ft_printf(const char *format, ...)
 		}
 	}
 	ft_putstr(buff);
+	i = ft_strlen(buff);
 	free(buff);
 	va_end(ap);
-	return (0);
+	return (i);
 }
 
 char	*buff_until(char *buff, char **format)

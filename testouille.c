@@ -6,32 +6,66 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/07 17:44:36 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 18:00:10 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf/ft_printf.h"
 #include <stdio.h>
+#include <fcntl.h>
+#include <locale.h>
 
 int				main(void)
 {
+	setlocale(LC_ALL, "en_US");
 	int			a = 42;
-	
-	ft_printf("Test 00 - %%%%\n");
-	ft_printf("Test 01 - %%s: %s\n", "OK");
-	ft_printf("Test 02 - %%S: %S\n", L"アニメ");
+
+	ft_putnbr(ft_printf("Test 00 - %%%%\n"));
+	ft_putendl("");
+	ft_putnbr(printf("Test 00 - %%%%\n"));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 01 - %%s: %s\n", "OK"));
+	ft_putendl("");
+	ft_putnbr(printf("Test 01 - %%s: %s\n", "OK"));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 02 - %%S: %S\n", L"アニメ"));
+	ft_putendl("");
+	ft_putnbr(printf("Test 02 - %%S: %S\n", L"アニメ"));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 04 - %%d: %d\n", a));
+	ft_putendl("");
+	ft_putnbr(printf("Test 04 - %%d: %d\n", a));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 06 - %%i: %i\n", a));
+	ft_putendl("");
+	ft_putnbr(printf("Test 06 - %%i: %i\n", a));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 13 - %%c: %c\n", 42));
+	ft_putendl("");
+	ft_putnbr(printf("Test 13 - %%c: %c\n", 42));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 14 - %%C: %C\n", L'ア'));
+	ft_putendl("");
+	ft_putnbr(printf("Test 14 - %%C: %C\n", L'ア'));
+	ft_putendl("");
+
+
+
 	// ft_printf("Test 03 - %%p: %p\n", b);
-	ft_printf("Test 04 - %%d: %d\n", a);
+
 	// ft_printf("Test 05 - %%D: %D\n", a);
-	ft_printf("Test 06 - %%i: %i\n", a);
 	// ft_printf("Test 07 - %%o: %o\n", 34);
 	// ft_printf("Test 08 - %%O: %O\n", 34);
 	// ft_printf("Test 09 - %%u: %u\n", (unsigned int)4200000000);
 	// ft_printf("Test 10 - %%U: %U\n", (unsigned int)4200000000);
 	// ft_printf("Test 11 - %%x: %x\n", 42);
 	// ft_printf("test 12 - %%X: %X\n", 42);
-	ft_printf("Test 13 - %%c: %c\n", 42);
-	ft_printf("Test 14 - %%C: %C\n", L'ア');
 
 	// ft_printf("Test 15 - %%#o: %#o\n", 34);
 	// ft_printf("Test 16 - %%#x: %#x\n", 42);
