@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 13:45:19 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/07 14:02:04 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,24 @@ char	*ft_conv_ws(char *buff, va_list ap, t_opt form_arg)
 			free(tmp);
 		}
 	}
+	return (buff);
+}
+
+char	*ft_conv_c(char *buff, va_list ap, t_opt form_arg)
+{
+	char	*s;
+	char	*tmp;
+
+	s = ft_strnew(1);
+	check_alloc((void*)s);
+	s[0] = va_arg(ap, char);
+	if (form_arg.conv)
+	{
+		tmp = buff;
+		buff = ft_strjoin(buff, s);
+		check_alloc((void *)buff);
+		free(tmp);
+	}
+	free(s);
 	return (buff);
 }
