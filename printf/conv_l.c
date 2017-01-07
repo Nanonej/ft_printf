@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 15:09:10 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/07 16:04:03 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,72 +38,63 @@ void	ft_wchar_to_str(wchar_t c, char **s)
 	}
 }
 
-char	*ft_conv_s(char *buff, va_list ap, t_opt form_arg)
+char	*ft_conv_s(va_list ap, t_opt form_arg)
 {
 	char	*tmp;
 
 	if (form_arg.conv)
 	{
-		tmp = buff;
-		buff = ft_strjoin(buff, va_arg(ap, char *));
-		check_alloc((void *)buff);
-		free(tmp);
+		tmp = ft_strdup(va_arg(ap, char *));
+		check_alloc((void *)tmp);
 	}
-	return (buff);
+	return (tmp);
 }
 
-char	*ft_conv_ws(char *buff, va_list ap, t_opt form_arg)
+char	*ft_conv_ws(va_list ap, t_opt form_arg)
 {
 	wchar_t	*wstr;
 	char	*tmp;
+	char	*forfree;
 	char	*s;
 
+	tmp = ft_strnew(0);
+	check_alloc((void *)tmp);
+	wstr = va_arg(ap, wchar_t *);
 	if (form_arg.conv)
 	{
-		wstr = va_arg(ap, wchar_t *);
-		while (*wstr != 0)
+		while (*wstr)
 		{
-			tmp = buff;
-			buff = ft_strjoin(buff, ft_wchar_to_str(*wstr, &s));
-			check_alloc((void *)buff);
-			free(tmp);
+			ft_wchar_to_str(*wstr, &s);
+			forfree = tmp;
+			tmp = ft_strjoin(tmp, s);
+			check_alloc((void *)tmp);
+			wstr++;
+			free(forfree);
 			free(s);
 		}
 	}
-	return (buff);
+	return (tmp);
 }
 
-char	*ft_conv_c(char *buff, va_list ap, t_opt form_arg)
-{
-	char	*s;
-	char	*tmp;
-
-	s = ft_strnew(1);
-	check_alloc((void*)s);
-	s[0] = va_arg(ap, int);
-	if (form_arg.conv)
-	{
-		tmp = buff;
-		buff = ft_strjoin(buff, s);
-		check_alloc((void *)buff);
-		free(tmp);
-	}
-	free(s);
-	return (buff);
-}
-
-char	*ft_conv_wc(char *buff, va_list ap, t_opt form_arg)
+char	*ft_conv_c(va_list ap, t_opt form_arg)
 {
 	char	*tmp;
-	char	*s;
 
 	if (form_arg.conv)
 	{
-		tmp = buff;
-		buff = ft_strjoin(buff, ft_wchar_to_str(va_arg(ap, wchar_t), &s));
-		check_alloc((void *)buff);
-		free(tmp);
-		free(s);
+		tmp = ft_strnew(1);
+		tmp[0] = (char)va_arg(ap, int);
 	}
-	return (buff);
+	return (tmp);
+}
+
+char	*ft_conv_wc(va_list ap, t_opt form_arg)
+{
+	char	*tmp;
+
+	if (form_arg.conv)
+	{
+		ft_wchar_to_str(va_arg(ap, wchar_t), &tmp);
+	}
+	return (tmp);
 }

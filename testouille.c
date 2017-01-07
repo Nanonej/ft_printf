@@ -6,44 +6,50 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/07 11:31:45 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 16:05:10 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf/ft_printf.h"
 #include <stdio.h>
+
 int				main(void)
 {
-	ft_printf("test %s et en plus %s peut en %s", "de merde", "on", "mettre");
-	// char		*format;
-	// char		*buff;
-	// t_opt		form_arg;
-	// int			i;
-	// int			n;
+	ft_printf("Test 01 - s: %s\n", "OK");
+	ft_printf("Test 02 - S: %S\n", L"アニメ");
+	// printf("Test 03 - p: %p\n", b);
+	// printf("Test 04 - d: %d\n", a);
+	// printf("Test 05 - D: %D\n", a);
+	// printf("Test 06 - i: %i\n", a);
+	// printf("Test 07 - o: %o\n", 34);
+	// printf("Test 08 - O: %O\n", 34);
+	// printf("Test 09 - u: %u\n", (unsigned int)4200000000);
+	// printf("Test 10 - U: %U\n", (unsigned int)4200000000);
+	// printf("Test 11 - x: %x\n", 42);
+	// printf("test 12 - X: %X\n", 42);
+	ft_printf("Test 13 - c: %c\n", 0);
+	ft_printf("Test 14 - C: %C\n", L'ア');
+
+	// printf("Test 15 - #o: %#o\n", 34);
+	// printf("Test 16 - #x: %#x\n", 42);
+	// printf("Test 17 - #X: %#X\n", 42);
 	//
-	// i = 1;
-	// buff = ft_strnew(0);
-	// format = ft_strdup("test d%#-+ hhe mer%sde%d");
-	// while (*format)
-	// {
-	// 	buff = buff_until(buff, &format);
-	// 	printf("NOTCONV %d : %s\n", i, buff);
-	// 	if (*(format - 1) == '%')
-	// 	{
-	// 		n = start_opt(&form_arg, &format);
-	// 		printf("RET : %d\n", n);
-	// 		printf("MINUS  %d : %c\n", i, form_arg.minus);
-	// 		printf("PLUS  %d : %c\n", i, form_arg.plus);
-	// 		printf("ZERO  %d : %c\n", i, form_arg.zero);
-	// 		printf("SPACE  %d : %c\n", i, form_arg.space);
-	// 		printf("hash  %d : %c\n", i, form_arg.hash);
-	// 		printf("LEN  %d : %d\n", i, form_arg.len);
-	// 		printf("PREC  %d : %d\n", i, form_arg.prec);
-	// 		printf("MOD  %d : %s\n", i, form_arg.mod);
-	// 		printf("CONV  %d : %c\n", i, form_arg.conv);
-	// 	}
-	// 	i++;
-	// 	printf("--------------------------");
-	// }
+	// printf("Test 18 - 08d: %08d\n", 42);
+	// printf("Test 19 - -8d: %-8d\n", 42);
+	// printf("Test 20 - +8d: %+8d\n", 42);
+	// printf("Test 21 -  8d: % 8d\n", 42);
+	//
+	// printf("Test 22 - 8d: %8d\n", 42);
+	//
+	// printf("Test 23 - .2f: %.2f\n", 42.314159265359);
+	//
+	// printf("Test 24 - hhd: %hhd\n", (char)'*');
+	// printf("Test 25 - hd: %hd\n", (short)4200);
+	// printf("Test 26 - ld: %ld\n", (long)420000000);
+	// printf("Test 27 - lld: %lld\n", (long long)4223372036854775807);
+	// printf("Test 28 - jd: %jd\n", (intmax_t)42);
+	// printf("Test 29 - zd: %zd\n\n", (size_t)42);
+	//
+	// printf("Test WTF DUDE ?!: %d\n\n", 42);
 	return (0);
 }
