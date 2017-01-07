@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 11:33:38 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 11:53:46 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ char	*buff_conv(char *buff, char **format, char *(**p)(char *, va_list, t_opt), 
 void	fill_array(char *(**p)(char *, va_list, t_opt))
 {
 	p[0] = ft_conv_s;
-	// p[0] = ft_conv_s;
 	// p[1] = ft_conv_ws;
 	// p[2] = ft_conv_p;
 	// p[3] = ft_conv_d;
