@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/05 17:42:59 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 11:33:38 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	char	*buff;
-	int		(*p[14]) (char *buff, va_list ap, t_opt form_arg);
+	char	*(*p[14]) (char *buff, va_list ap, t_opt form_arg);
 
 	buff = ft_strnew(0);
 	check_alloc((void *)buff);
@@ -27,11 +27,13 @@ int		ft_printf(const char *format, ...)
 		buff = buff_until(buff, (char **)&format);
 		if (*format)
 		{
-			buff = buff_conv(buff, (char **)&format);
+			buff = buff_conv(buff, (char **)&format, p, ap);
 			if (buff == NULL)
 				return (-1);
 		}
 	}
+	ft_putstr(buff);
+	free(buff);
 	va_end(ap);
 	return (0);
 }
@@ -57,16 +59,17 @@ char	*buff_until(char *buff, char **format)
 	return (tmp);
 }
 
-char	*buff_conv(char *buff, char **format)
+char	*buff_conv(char *buff, char **format, char *(**p)(char *, va_list, t_opt), va_list ap)
 {
 	t_opt	form_arg;
 
 	if (start_opt(&form_arg, format) == 1)
 		return (NULL);
+	buff = p[0](buff, ap, form_arg);
 	return (buff);
 }
 
-void	fill_array(int (**p)(char *, va_list, t_opt))
+void	fill_array(char *(**p)(char *, va_list, t_opt))
 {
 	p[0] = ft_conv_s;
 	// p[0] = ft_conv_s;

@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2017/01/05 11:56:28 by lchim            ###   ########.fr        #
+#    Updated: 2017/01/07 11:48:11 by lchim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ SRCS 	=	libft/ft_atoi.c				\
 			printf/ft_printf.c			\
 			printf/error.c				\
 			printf/fill_opt.c			\
+			printf/conv_l.c			\
 
 OBJT	= $(SRCS:.c=.o)
 
