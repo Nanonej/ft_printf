@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/04 17:16:59 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/07 14:16:55 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		main(void)
 	printf("Test 11 - %%x: %x\n", 42);
 	printf("test 12 - %%X: %X\n", 42);
 	printf("Test 13 - %%c: %c\n", 42);
-	printf("Test 14 - %%C: %C\n", 242);
+	printf("Test 14 - %%C: %C\n", L'ア');
 
 	printf("Test 15 - %%#o: %#o\n", 34);
 	printf("Test 16 - %%#x: %#x\n", 42);

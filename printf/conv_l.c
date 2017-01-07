@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 14:02:04 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/07 14:22:34 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 char	*ft_wchar_to_str(wchar_t c)
 {
-	char s[5];
+	char *s;
 
-	ft_strclr(s);
+	s = ft_strnew(4);
+	check_alloc((void*)s);
 	if (c <= 0x7F)
 		s[0] = c;
 	else if (c < 0x7FF)
@@ -61,7 +62,7 @@ char	*ft_conv_ws(char *buff, va_list ap, t_opt form_arg)
 
 	if (form_arg.conv)
 	{
-		wstr = va_arg(ap, wchar_t *)
+		wstr = va_arg(ap, wchar_t *);
 		while (*wstr != 0)
 		{
 			tmp = buff;
@@ -80,7 +81,7 @@ char	*ft_conv_c(char *buff, va_list ap, t_opt form_arg)
 
 	s = ft_strnew(1);
 	check_alloc((void*)s);
-	s[0] = va_arg(ap, char);
+	s[0] = va_arg(ap, int);
 	if (form_arg.conv)
 	{
 		tmp = buff;
@@ -89,5 +90,19 @@ char	*ft_conv_c(char *buff, va_list ap, t_opt form_arg)
 		free(tmp);
 	}
 	free(s);
+	return (buff);
+}
+
+char	*ft_conv_wc(char *buff, va_list ap, t_opt form_arg)
+{
+	char	*tmp;
+
+	if (form_arg.conv)
+	{
+		tmp = buff;
+		buff = ft_strjoin(buff, ft_wchar_to_str(va_arg(ap, wchar_t)));
+		check_alloc((void *)buff);
+		free(tmp);
+	}
 	return (buff);
 }

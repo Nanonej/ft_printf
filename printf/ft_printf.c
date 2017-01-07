@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 11:53:46 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 14:18:48 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ void	fill_array(char *(**p)(char *, va_list, t_opt))
 	// p[10] = ft_conv_x;
 	// p[11] = ft_conv_x;
 	// p[12] = ft_conv_c;
-	// p[13] = ft_conv_uc;
+	// p[13] = ft_conv_wc;
 }
