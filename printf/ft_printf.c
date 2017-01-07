@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 15:46:43 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 17:28:07 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	char	*buff;
-	char	*(*p[14]) (va_list ap, t_opt form_arg);
+	char	*(*p[14]) (va_list ap);
 
 	buff = ft_strnew(0);
 	check_alloc((void *)buff);
@@ -59,7 +59,7 @@ char	*buff_until(char *buff, char **format)
 	return (tmp);
 }
 
-char	*buff_conv(char *buff, char **format, char *(**p)(va_list, t_opt), va_list ap)
+char	*buff_conv(char *buff, char **format, char *(**p)(va_list), va_list ap)
 {
 	t_opt	form_arg;
 	char	*arg;
@@ -68,7 +68,7 @@ char	*buff_conv(char *buff, char **format, char *(**p)(va_list, t_opt), va_list 
 	tmp = buff;
 	if (start_opt(&form_arg, format) == 1)
 		return (NULL);
-	arg = p[ft_strfind("sSpdDioOuUxXcC", form_arg.conv)](ap, form_arg);
+	arg = p[ft_strfind("sSpdDioOuUxXcC", form_arg.conv)](ap);
 	buff = ft_strjoin(buff, arg);
 	check_alloc((void *)buff);
 	free(tmp);
@@ -76,7 +76,7 @@ char	*buff_conv(char *buff, char **format, char *(**p)(va_list, t_opt), va_list 
 	return (buff);
 }
 
-void	fill_array(char *(**p)(va_list, t_opt))
+void	fill_array(char *(**p)(va_list))
 {
 	p[0] = ft_conv_s;
 	p[1] = ft_conv_ws;

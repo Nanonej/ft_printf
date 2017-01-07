@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 16:04:03 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 17:29:41 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,16 @@ void	ft_wchar_to_str(wchar_t c, char **s)
 	}
 }
 
-char	*ft_conv_s(va_list ap, t_opt form_arg)
+char	*ft_conv_s(va_list ap)
 {
 	char	*tmp;
 
-	if (form_arg.conv)
-	{
-		tmp = ft_strdup(va_arg(ap, char *));
-		check_alloc((void *)tmp);
-	}
+	tmp = ft_strdup(va_arg(ap, char *));
+	check_alloc((void *)tmp);
 	return (tmp);
 }
 
-char	*ft_conv_ws(va_list ap, t_opt form_arg)
+char	*ft_conv_ws(va_list ap)
 {
 	wchar_t	*wstr;
 	char	*tmp;
@@ -60,41 +57,33 @@ char	*ft_conv_ws(va_list ap, t_opt form_arg)
 	tmp = ft_strnew(0);
 	check_alloc((void *)tmp);
 	wstr = va_arg(ap, wchar_t *);
-	if (form_arg.conv)
+	while (*wstr)
 	{
-		while (*wstr)
-		{
-			ft_wchar_to_str(*wstr, &s);
-			forfree = tmp;
-			tmp = ft_strjoin(tmp, s);
-			check_alloc((void *)tmp);
-			wstr++;
-			free(forfree);
-			free(s);
-		}
+		ft_wchar_to_str(*wstr, &s);
+		forfree = tmp;
+		tmp = ft_strjoin(tmp, s);
+		check_alloc((void *)tmp);
+		wstr++;
+		free(forfree);
+		free(s);
 	}
 	return (tmp);
 }
 
-char	*ft_conv_c(va_list ap, t_opt form_arg)
+char	*ft_conv_c(va_list ap)
 {
 	char	*tmp;
 
-	if (form_arg.conv)
-	{
-		tmp = ft_strnew(1);
-		tmp[0] = (char)va_arg(ap, int);
-	}
+	tmp = ft_strnew(1);
+	check_alloc((void *)tmp);
+	tmp[0] = (char)va_arg(ap, int);
 	return (tmp);
 }
 
-char	*ft_conv_wc(va_list ap, t_opt form_arg)
+char	*ft_conv_wc(va_list ap)
 {
 	char	*tmp;
 
-	if (form_arg.conv)
-	{
-		ft_wchar_to_str(va_arg(ap, wchar_t), &tmp);
-	}
+	ft_wchar_to_str(va_arg(ap, wchar_t), &tmp);
 	return (tmp);
 }
