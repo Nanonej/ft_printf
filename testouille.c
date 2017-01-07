@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/07 18:00:10 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 18:11:11 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int				main(void)
 	ft_putnbr(printf("Test 01 - %%s: %s\n", "OK"));
 	ft_putendl("");
 
-	ft_putnbr(ft_printf("Test 02 - %%S: %S\n", L"アニメ"));
+	ft_putnbr(ft_printf("Test 02 - %%S: %S\n", L"▄︻̷̿┻̿═━一"));
 	ft_putendl("");
-	ft_putnbr(printf("Test 02 - %%S: %S\n", L"アニメ"));
+	ft_putnbr(printf("Test 02 - %%S: %S\n", L"▄︻̷̿┻̿═━一"));
 	ft_putendl("");
 
 	ft_putnbr(ft_printf("Test 04 - %%d: %d\n", a));
@@ -50,9 +50,9 @@ int				main(void)
 	ft_putnbr(printf("Test 13 - %%c: %c\n", 42));
 	ft_putendl("");
 
-	ft_putnbr(ft_printf("Test 14 - %%C: %C\n", L'ア'));
+	ft_putnbr(ft_printf("Test 14 - %%C: %C\n", L'腹'));
 	ft_putendl("");
-	ft_putnbr(printf("Test 14 - %%C: %C\n", L'ア'));
+	ft_putnbr(printf("Test 14 - %%C: %C\n", L'腹'));
 	ft_putendl("");
 
 
