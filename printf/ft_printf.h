@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 17:30:21 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 17:33:22 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char			*ft_conv_s(va_list ap);
 char			*ft_conv_ws(va_list ap);
 char			*ft_conv_c(va_list ap);
 char			*ft_conv_wc(va_list ap);
+
+char			*ft_conv_d(va_list ap);
 
 void			check_alloc(void *ptr);
 int				check_conv(char c);

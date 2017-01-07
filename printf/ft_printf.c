@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 17:28:07 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/07 17:43:19 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,11 @@ char	*buff_conv(char *buff, char **format, char *(**p)(va_list), va_list ap)
 	tmp = buff;
 	if (start_opt(&form_arg, format) == 1)
 		return (NULL);
-	arg = p[ft_strfind("sSpdDioOuUxXcC", form_arg.conv)](ap);
+	if (form_arg.conv != '%')
+		arg = p[ft_strfind("sSpdDioOuUxXcC", form_arg.conv)](ap);
+	else
+		arg = ft_strdup("%");
+	check_alloc((void *)arg);
 	buff = ft_strjoin(buff, arg);
 	check_alloc((void *)buff);
 	free(tmp);
@@ -81,9 +85,9 @@ void	fill_array(char *(**p)(va_list))
 	p[0] = ft_conv_s;
 	p[1] = ft_conv_ws;
 	// p[2] = ft_conv_p;
-	// p[3] = ft_conv_d;
+	p[3] = ft_conv_d;
 	// p[4] = ft_conv_d;
-	// p[5] = ft_conv_d;
+	p[5] = ft_conv_d;
 	// p[6] = ft_conv_o;
 	// p[7] = ft_conv_o;
 	// p[8] = ft_conv_u;
