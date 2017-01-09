@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 14:31:14 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/09 14:58:41 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char			*ft_conv_c(t_form *form)
 	if (form->conv == 'c' && !form->mod)
 	{
 		c = (char)va_arg(form->ap, int);
-		arg = ft_wchar_to_str((wchar_t)c, arg);
+		ft_wchar_to_str((wchar_t)c, &arg);
 	}
 	else if ((form->conv == 'c' && (form->mod)[0] == 'l') || form->conv == 'C')
 	{
@@ -67,25 +67,25 @@ char    *ft_conv_s(t_form *form)
     return (tmp);
 }
 
-// char    *ft_conv_ws(va_list ap)
-// {
-//     wchar_t    *wstr;
-//     char    *tmp;
-//     char    *forfree;
-//     char    *s;
-//
-//     tmp = ft_strnew(0);
-//     check_alloc((void *)tmp);
-//     wstr = va_arg(ap, wchar_t *);
-//     while (*wstr)
-//     {
-//         ft_wchar_to_str(*wstr, &s);
-//         forfree = tmp;
-//         tmp = ft_strjoin(tmp, s);
-//         check_alloc((void *)tmp);
-//         wstr++;
-//         free(forfree);
-//         free(s);
-//     }
-//     return (tmp);
-// }
+char    *ft_conv_ws(t_form *form)
+{
+    wchar_t		*wstr;
+    char		*tmp;
+    char		*forfree;
+    char		*s;
+
+    tmp = ft_strnew(0);
+    check_alloc((void *)tmp);
+    wstr = (wchar_t *)va_arg(form->ap, wint_t *);
+    while (*wstr)
+    {
+        ft_wchar_to_str(*wstr, &s);
+        forfree = tmp;
+        tmp = ft_strjoin(tmp, s);
+        check_alloc((void *)tmp);
+        wstr++;
+        free(forfree);
+        free(s);
+    }
+    return (tmp);
+}
