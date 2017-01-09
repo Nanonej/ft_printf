@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/09 16:38:02 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 17:16:40 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,5 @@ int				main(void)
 	// ft_printf("Test 29 - zd: %zd\n\n", (size_t)42);
 	//
 	// ft_printf("Test WTF DUDE ?!: %d\n\n", 42);
-	while (1);
 	return (0);
 }
