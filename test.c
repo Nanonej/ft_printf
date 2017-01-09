@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 19:13:32 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/09 19:20:11 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int		main(void)
 {
-	printf("%s\n", ft_itoa_base(100, 8));
+	setlocale(LC_ALL, "en_US");
+	ft_putnbr(ft_printf("%s", 'a'));
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 16:35:57 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 18:36:04 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ int				ft_conv_s(t_form *form)
 
 	if (form->conv == 's' && !form->mod)
 	{
-		form->arg = ft_strdup(va_arg(form->ap, char *));
-		check_alloc((void *)form->arg);
+		form->arg = va_arg(form->ap, char *);
 	}
-	else if (form->conv == 's'  && ((form->mod)[0] == 'l' || form->conv == 'S'))
+	else if ((form->conv == 's'  && (form->mod)[0] == 'l') || form->conv == 'S')
 	{
 		form->arg = ft_strnew(0);
 		wstr = va_arg(form->ap, wchar_t *);
