@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/09 13:28:58 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 15:28:38 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_form			*init_form(t_form *form)
 
 void			init_array(t_array *p)
 {
-	p[0] = NULL;
-	// p[1] = ft_conv_ws;
+	p[0] = ft_conv_s;
+	p[1] = ft_conv_ws;
 	// p[2] = ft_conv_p;
 	// p[3] = ft_conv_d;
 	// p[4] = ft_conv_d;

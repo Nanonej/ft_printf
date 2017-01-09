@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 14:58:41 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/09 15:32:06 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void   			 ft_wchar_to_str(wchar_t c, char **s)
 {
-    *s = ft_strnew(4);
-    check_alloc((void*)s);
+	if (c <= 0x10FFFF)
+	{
+		*s = ft_strnew(4);
+    	check_alloc((void*)s);
+	}
     if (c <= 0x7F)
         (*s)[0] = c;
     else if (c < 0x7FF)
@@ -58,16 +61,16 @@ char			*ft_conv_c(t_form *form)
 	return (arg);
 }
 
-char    *ft_conv_s(t_form *form)
+char			*ft_conv_s(t_form *form)
 {
-    char    *tmp;
+    char    	*tmp;
 
     tmp = ft_strdup(va_arg(form->ap, char *));
     check_alloc((void *)tmp);
     return (tmp);
 }
 
-char    *ft_conv_ws(t_form *form)
+char			*ft_conv_ws(t_form *form)
 {
     wchar_t		*wstr;
     char		*tmp;

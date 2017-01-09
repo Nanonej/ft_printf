@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/09 14:49:07 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/09 15:33:27 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@
 int				main(void)
 {
 	setlocale(LC_ALL, "en_US");
-	int			a = 42;
+	// int			a = 42;
 
 	// ft_putnbr(ft_printf("Test 00 - %%\n"));
 	// ft_putendl("");
 	// ft_putnbr(printf("Test 00 - %%\n"));
 	// ft_putendl("");
 	//
-	// ft_putnbr(ft_printf("Test 01 - s: %s\n", "OK"));
-	// ft_putendl("");
-	// ft_putnbr(printf("Test 01 - s: %s\n", "OK"));
-	// ft_putendl("");
-	//
-	// ft_putnbr(ft_printf("Test 02 - S: %S\n", L"▄︻̷̿┻̿═━一"));
-	// ft_putendl("");
-	// ft_putnbr(printf("Test 02 - S: %S\n", L"▄︻̷̿┻̿═━一"));
-	// ft_putendl("");
-	//
+	ft_putnbr(ft_printf("Test 01 - s: %s\n", "OK"));
+	ft_putendl("");
+	ft_putnbr(printf("Test 01 - s: %s\n", "OK"));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 02 - S: %S\n", L"▄︻̷̿┻̿═━一"));
+	ft_putendl("");
+	ft_putnbr(printf("Test 02 - S: %S\n", L"▄︻̷̿┻̿═━一"));
+	ft_putendl("");
+
 	// ft_putnbr(ft_printf("Test 04 - d: %d\n", a));
 	// ft_putendl("");
 	// ft_putnbr(printf("Test 04 - d: %d\n", a));
@@ -45,9 +45,9 @@ int				main(void)
 	// ft_putnbr(printf("Test 06 - i: %i\n", a));
 	// ft_putendl("");
 
-	ft_putnbr(ft_printf("Test 13 - c: %c\n", 42));
+	ft_putnbr(ft_printf("Test 13 - c: %c\n", 'A'));
 	ft_putendl("");
-	ft_putnbr(printf("Test 13 - c: %c\n", 42));
+	ft_putnbr(printf("Test 13 - c: %c\n", 'A'));
 	ft_putendl("");
 
 	ft_putnbr(ft_printf("Test 14 - C: %C\n", L'腹'));
