@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 13:46:21 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 13:47:54 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char			*ft_conv_c(t_form *form)
 	char		*arg;
 
 	arg = NULL;
-	if (form->mod == 'c' && !form->mod);
+	if (form->conv == 'c' && !form->mod)
 	{
 		c = (char)va_arg(form->ap, int);
 		arg = ft_strdup(&c);
