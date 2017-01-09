@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/09 15:28:38 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 16:13:46 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void			init_array(t_array *p)
 
 void			init_opt(t_form *form)
 {
+	form->arg = NULL;
 	form->minus = 0;
 	form->plus = 0;
 	form->zero = 0;
@@ -57,11 +58,13 @@ void			init_opt(t_form *form)
 void			init_clear(t_form **form)
 {
 	va_end((*form)->ap);
-	free((*form)->buff);
-	(*form)->buff = NULL;
+	if ((*form)->buff)
+		free((*form)->buff);
+	if ((*form)->arg)
+		free((*form)->arg);
 	if ((*form)->mod)
 		free((*form)->mod);
-	(*form)->mod = NULL;
+	init_opt(*form);
 	free(*form);
 	*form = NULL;
 }

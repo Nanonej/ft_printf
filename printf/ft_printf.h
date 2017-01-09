@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 15:59:08 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 16:15:28 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 typedef struct	s_form
 {
 	char		*buff;
+	char		*arg;
 	va_list		ap;
-	char		*(*p[14])(struct s_form *form);
+	int			(*p[14])(struct s_form *form);
 	char		minus;
 	char		plus;
 	char		zero;
@@ -35,7 +36,7 @@ typedef struct	s_form
 	char		conv;
 }				t_form;
 
-typedef char	*(*t_array)(t_form *form);
+typedef int		(*t_array)(t_form *form);
 
 int				ft_printf(const char *format, ...);
 char			*buff_until(char *buff, char **format);
@@ -51,9 +52,9 @@ void			check_opt(t_form *form, char **format);
 void			check_len_prec(t_form *form, char **format, int ftbool);
 void			check_mod(t_form *form, char **format);
 
-char			*ft_conv_c(t_form *form);
-char			*ft_conv_s(t_form *form);
-char			*ft_conv_ws(t_form *form);
+int				ft_conv_c(t_form *form);
+int				ft_conv_s(t_form *form);
+int				ft_conv_ws(t_form *form);
 void 			ft_wchar_to_str(wchar_t c, char **s);
 
 void			check_alloc(void *ptr);

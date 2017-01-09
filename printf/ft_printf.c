@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 13:37:42 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 16:10:19 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ char			*buff_until(char *buff, char **format)
 
 int				buff_conv(t_form *form, char **format)
 {
-	char		*arg;
 	char		*tmp;
 
 	if (!(fill_opt(form, format)))
@@ -67,8 +66,12 @@ int				buff_conv(t_form *form, char **format)
 		init_clear(&form);
 		return (1);
 	}
-	arg = form->p[ft_strfind("sSpdDioOuUxXcC", form->conv)](form);
-	tmp = ft_strjoin(form->buff, arg);
+	if (form->p[ft_strfind("sSpdDioOuUxXcC", form->conv)](form) == 0)
+	{
+		init_clear(&form);
+		return (1);
+	}
+	tmp = ft_strjoin(form->buff, form->arg);
 	check_alloc((void *)tmp);
 	free(form->buff);
 	form->buff = tmp;

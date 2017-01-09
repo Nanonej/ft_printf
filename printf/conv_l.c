@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 15:32:06 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 16:15:34 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,54 +41,49 @@ void   			 ft_wchar_to_str(wchar_t c, char **s)
     }
 }
 
-char			*ft_conv_c(t_form *form)
+int				ft_conv_c(t_form *form)
 {
 	char		c;
 	wchar_t		lc;
-	char		*arg;
 
-	arg = NULL;
 	if (form->conv == 'c' && !form->mod)
 	{
 		c = (char)va_arg(form->ap, int);
-		ft_wchar_to_str((wchar_t)c, &arg);
+		ft_wchar_to_str((wchar_t)c, &(form->arg));
 	}
 	else if ((form->conv == 'c' && (form->mod)[0] == 'l') || form->conv == 'C')
 	{
 		lc = (wchar_t)va_arg(form->ap, wint_t);
-		ft_wchar_to_str(lc, &arg);
+		ft_wchar_to_str(lc, &(form->arg));
 	}
-	return (arg);
+	return ((form->arg) ? 1 : 0);
 }
 
-char			*ft_conv_s(t_form *form)
+int				ft_conv_s(t_form *form)
 {
-    char    	*tmp;
-
-    tmp = ft_strdup(va_arg(form->ap, char *));
-    check_alloc((void *)tmp);
-    return (tmp);
+    form->arg = ft_strdup(va_arg(form->ap, char *));
+    check_alloc((void *)form->arg);
+    return ((form->arg) ? 1 : 0);
 }
 
-char			*ft_conv_ws(t_form *form)
+int				ft_conv_ws(t_form *form)
 {
     wchar_t		*wstr;
-    char		*tmp;
     char		*forfree;
     char		*s;
 
-    tmp = ft_strnew(0);
-    check_alloc((void *)tmp);
+    form->arg = ft_strnew(0);
+    check_alloc((void *)form->arg);
     wstr = (wchar_t *)va_arg(form->ap, wint_t *);
     while (*wstr)
     {
         ft_wchar_to_str(*wstr, &s);
-        forfree = tmp;
-        tmp = ft_strjoin(tmp, s);
-        check_alloc((void *)tmp);
+        forfree = form->arg;
+        form->arg = ft_strjoin(form->arg, s);
+        check_alloc((void *)form->arg);
         wstr++;
         free(forfree);
         free(s);
     }
-    return (tmp);
+    return ((form->arg) ? 1 : 0);
 }
