@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 16:37:37 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 18:29:12 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ int				buff_conv(t_form *form, char **format)
 	}
 	form->buff = free_swap(form->buff, ft_strjoin(form->buff, form->arg));
 	check_alloc((void *)form->buff);
+	if (form->conv != 's' || form->mod)
+		free(form->arg);
 	return (0);
 }

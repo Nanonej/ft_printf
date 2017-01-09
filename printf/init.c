@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/09 16:31:58 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 18:31:49 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void			init_clear(t_form **form)
 	va_end((*form)->ap);
 	if ((*form)->buff)
 		free((*form)->buff);
-	if ((*form)->arg)
-		free((*form)->arg);
 	if ((*form)->mod)
 		free((*form)->mod);
 	init_opt(*form);
