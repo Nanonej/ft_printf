@@ -6,11 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2017/01/09 16:40:23 by aridolfi         ###   ########.fr       */
-=======
-/*   Updated: 2017/01/09 17:16:40 by lchim            ###   ########.fr       */
->>>>>>> 1e34696b2c7c5ed351bace10ff726dc6411f2c11
+/*   Updated: 2017/01/09 20:26:04 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +18,7 @@
 int				main(void)
 {
 	setlocale(LC_ALL, "en_US");
-	// int			a = 42;
+	int			a = 42;
 
 	// ft_putnbr(ft_printf("Test 00 - %%\n"));
 	// ft_putendl("");
@@ -39,15 +35,20 @@ int				main(void)
 	ft_putnbr(printf("Test 02 - S: %S\n", L"▄︻̷̿┻̿═━一"));
 	ft_putendl("");
 
-	// ft_putnbr(ft_printf("Test 04 - d: %d\n", a));
-	// ft_putendl("");
-	// ft_putnbr(printf("Test 04 - d: %d\n", a));
-	// ft_putendl("");
-	//
-	// ft_putnbr(ft_printf("Test 06 - i: %i\n", a));
-	// ft_putendl("");
-	// ft_putnbr(printf("Test 06 - i: %i\n", a));
-	// ft_putendl("");
+	ft_putnbr(ft_printf("Test 04 - d: %d\n", a));
+	ft_putendl("");
+	ft_putnbr(printf("Test 04 - d: %d\n", a));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 05 - D: %D\n", a));
+	ft_putendl("");
+	ft_putnbr(printf("Test 05 - D: %D\n", a));
+	ft_putendl("");
+
+	ft_putnbr(ft_printf("Test 06 - i: %i\n", a));
+	ft_putendl("");
+	ft_putnbr(printf("Test 06 - i: %i\n", a));
+	ft_putendl("");
 
 	ft_putnbr(ft_printf("Test 13 - c: %c\n", 'A'));
 	ft_putendl("");
@@ -63,7 +64,6 @@ int				main(void)
 
 	// ft_printf("Test 03 - p: %p\n", b);
 
-	// ft_printf("Test 05 - D: %D\n", a);
 	// ft_printf("Test 07 - o: %o\n", 34);
 	// ft_printf("Test 08 - O: %O\n", 34);
 	// ft_printf("Test 09 - u: %u\n", (unsigned int)4200000000);
