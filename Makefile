@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2017/01/09 11:19:07 by lchim            ###   ########.fr        #
+#    Updated: 2017/01/09 19:12:18 by aridolfi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS 	=	libft/ft_atoi.c				\
 			libft/ft_isprint.c			\
 			libft/ft_iswhitespace.c		\
 			libft/ft_itoa.c				\
+			libft/ft_itoa_base.c		\
 			libft/ft_lstadd.c			\
 			libft/ft_lstback.c			\
 			libft/ft_lstdel.c			\
