@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 16:10:19 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 16:37:37 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int				ft_printf(const char *format, ...)
 
 char			*buff_until(char *buff, char **format)
 {
-	char		*tmp;
 	char		*sub;
 	int			pos;
 
@@ -49,18 +48,15 @@ char			*buff_until(char *buff, char **format)
 		pos = ft_strlen(*format);
 	sub = ft_strsub(*format, 0, pos);
 	check_alloc((void *)sub);
-	tmp = ft_strjoin(buff, sub);
-	check_alloc((void *)tmp);
+	buff = free_swap(buff, ft_strjoin(buff, sub));
+	check_alloc((void *)buff);
 	*format += pos;
-	free(buff);
 	free(sub);
-	return (tmp);
+	return (buff);
 }
 
 int				buff_conv(t_form *form, char **format)
 {
-	char		*tmp;
-
 	if (!(fill_opt(form, format)))
 	{
 		init_clear(&form);
@@ -71,9 +67,7 @@ int				buff_conv(t_form *form, char **format)
 		init_clear(&form);
 		return (1);
 	}
-	tmp = ft_strjoin(form->buff, form->arg);
-	check_alloc((void *)tmp);
-	free(form->buff);
-	form->buff = tmp;
+	form->buff = free_swap(form->buff, ft_strjoin(form->buff, form->arg));
+	check_alloc((void *)form->buff);
 	return (0);
 }

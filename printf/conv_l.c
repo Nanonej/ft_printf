@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 16:15:34 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 16:35:57 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,26 @@ int				ft_conv_c(t_form *form)
 
 int				ft_conv_s(t_form *form)
 {
-    form->arg = ft_strdup(va_arg(form->ap, char *));
-    check_alloc((void *)form->arg);
-    return ((form->arg) ? 1 : 0);
-}
+	wchar_t		*wstr;
+	char		*s;
 
-int				ft_conv_ws(t_form *form)
-{
-    wchar_t		*wstr;
-    char		*forfree;
-    char		*s;
-
-    form->arg = ft_strnew(0);
-    check_alloc((void *)form->arg);
-    wstr = (wchar_t *)va_arg(form->ap, wint_t *);
-    while (*wstr)
-    {
-        ft_wchar_to_str(*wstr, &s);
-        forfree = form->arg;
-        form->arg = ft_strjoin(form->arg, s);
-        check_alloc((void *)form->arg);
-        wstr++;
-        free(forfree);
-        free(s);
-    }
-    return ((form->arg) ? 1 : 0);
+	if (form->conv == 's' && !form->mod)
+	{
+		form->arg = ft_strdup(va_arg(form->ap, char *));
+		check_alloc((void *)form->arg);
+	}
+	else if (form->conv == 's'  && ((form->mod)[0] == 'l' || form->conv == 'S'))
+	{
+		form->arg = ft_strnew(0);
+		wstr = va_arg(form->ap, wchar_t *);
+		while (*wstr)
+		{
+			check_alloc((void *)form->arg);
+			ft_wchar_to_str(*wstr, &s);
+			form->arg = free_swap(form->arg, ft_strjoin(form->arg, s));
+	        wstr++;
+	        free(s);
+		}
+	}
+	return ((form->arg) ? 1 : 0);
 }
