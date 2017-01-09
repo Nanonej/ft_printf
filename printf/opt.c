@@ -5,57 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 13:09:44 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/07 14:27:27 by lchim            ###   ########.fr       */
+/*   Created: 2017/01/08 19:16:14 by lchim             #+#    #+#             */
+/*   Updated: 2017/01/08 20:45:11 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*opt_plus_space(char *arg, char plus, char space)
+int				fill_opt(t_form *form, char **format)
 {
-	char	*tmp;
-
-	tmp = NULL;
-	if (space || plus)
+	(*format)++;
+	init_opt(form);
+	check_opt(form, format);
+	check_len_prec(form, format, 0);
+	check_mod(form, format);
+	if (check_conv((form->conv = **format)) != 1)
 	{
-		tmp = ft_strjoin(" ", arg);
-		check_alloc((void *)tmp);
+		(*format)++;
+		return (1);
 	}
-	if (plus)
-		tmp[0] = '+';
-	free(arg);
-	return (tmp);
+	return (0);
 }
 
-char		*opt_len(char *arg, int len, char minor, char zero)
+void			check_opt(t_form *form, char **format)
 {
-	char	*tmp;
-
-	tmp = ft_strnew(len);
-	check_alloc((void *)tmp);
-	if (!minor && zero)
-		tmp = (char *)ft_memset((void *)tmp, '0', len);
-	else
-		tmp = (char *)ft_memset((void *)tmp, ' ', len);
-	if (minor)
-		tmp = ft_strcpy(tmp, arg);
-	else
-		tmp = ft_strcpy(tmp + (ft_strlen(tmp) - ft_strlen(arg)), arg);
-	free(arg);
-	return (tmp);
+	while (**format == '-' || **format == '+' || **format == '0' || \
+	**format == ' ' || **format == '#')
+	{
+		if (**format == '-')
+			form->minus = 1;
+		else if (**format == '+')
+			form->plus = 1;
+		else if (**format == '0')
+			form->zero = 1;
+		else if (**format == ' ')
+			form->space = 1;
+		else if (**format == '#')
+			form->hash = 1;
+		(*format)++;
+	}
 }
 
-char		*opt_prec(char *arg, int prec)
+void			check_len_prec(t_form *form, char **format, int ftbool)
 {
+	int		nb;
+	int		count;
+
+	if (**format >= '0' && **format <= '9')
+	{
+		count = 1;
+		nb = ft_atoi(*format);
+		while ((nb /= 10) != 0)
+			count++;
+		if (!ftbool)
+			form->len = ft_atoi(*format);
+		else
+			form->prec = ft_atoi(*format);
+		*format += count;
+	}
+	if (**format == '.')
+	{
+		(*format)++;
+		check_len_prec(form, format, 1);
+	}
+}
+
+void			check_mod(t_form *form, char **format)
+{
+	int		i;
 	char	*tmp;
 
-	ft_strclr(arg + ft_strfind(arg, '.') + prec + 2);
-	if (arg[ft_strlen(arg) - 1] > '5' && arg[ft_strlen(arg) - 1] < '9')
-		arg[ft_strlen(arg) - 2] += 1;
-	arg[ft_strlen(arg) - 1] = '\0';
-	tmp = ft_strdup(arg);
-	check_alloc((void *)tmp);
-	free(arg);
-	return (tmp);
+	i = 0;
+	tmp = *format;
+	while (*tmp == 'j' || *tmp == 'z' || *tmp == 'h' || *tmp == 'l')
+	{
+		i++;
+		tmp++;
+	}
+	if (i == 1 || i == 2)
+	{
+		tmp = ft_strsub(*format, 0, i);
+		check_alloc((void *)tmp);
+		form->mod = tmp;
+	}
+	if (i == 2 && (!ft_strequ(form->mod, "ll") && !ft_strequ(form->mod, "hh")))
+	{
+		free(form->mod);
+		form->mod = NULL;
+	}
+	*format += i;
 }

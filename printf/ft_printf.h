@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 17:33:22 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 11:01:23 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 # include <stdlib.h>
 # include <stdio.h> ////////////////////////////////////////////////////////////
 
-typedef struct	s_opt
+typedef struct	s_form
 {
+	char		*buff;
+	va_list		ap;
+	char		*(*p[14])(struct s_form *form);
 	char		minus;
 	char		plus;
 	char		zero;
@@ -30,32 +33,26 @@ typedef struct	s_opt
 	int			prec;
 	char		*mod;
 	char		conv;
-}				t_opt;
+}				t_form;
+
+typedef char	*(*t_array)(t_form *form);
 
 int				ft_printf(const char *format, ...);
 char			*buff_until(char *buff, char **format);
-char			*buff_conv(char *buff, char **format, char *(**p)(va_list), va_list ap);
-void			fill_array(char *(**p)(va_list));
+int				buff_conv(t_form *form, char **format);
 
-int				start_opt(t_opt *form_arg, char **format);
-void			clear_opt(t_opt *form_arg);
-void			check_opt(t_opt *form_arg, char **format);
-void			check_len_prec(t_opt *form_arg, char **format, int ftbool);
-void			check_mod(t_opt *form_arg, char **format);
+t_form			*init_form(t_form *form);
+void			init_array(t_array *p);
+void			init_opt(t_form *form);
+void			init_clear(t_form **form);
 
-char			*opt_plus_space(char *arg, char plus, char space);
-char			*opt_len(char *arg, int len, char minor, char zero);
-char			*opt_prec(char *arg, int prec);
+int				fill_opt(t_form *form, char **format);
+void			check_opt(t_form *form, char **format);
+void			check_len_prec(t_form *form, char **format, int ftbool);
+void			check_mod(t_form *form, char **format);
 
-void 			ft_wchar_to_str(wchar_t c, char **s);
-char			*ft_conv_s(va_list ap);
-char			*ft_conv_ws(va_list ap);
-char			*ft_conv_c(va_list ap);
-char			*ft_conv_wc(va_list ap);
-
-char			*ft_conv_d(va_list ap);
+char			*conv_s(t_form *form);
 
 void			check_alloc(void *ptr);
 int				check_conv(char c);
-
 #endif

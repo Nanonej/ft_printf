@@ -6,96 +6,64 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/07 17:49:33 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 10:57:05 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
-	va_list	ap;
-	char	*buff;
-	char	*(*p[14]) (va_list ap);
-	int		i;
+	int			ret;
+	t_form		*form;
 
-	buff = ft_strnew(0);
-	check_alloc((void *)buff);
-	va_start(ap, format);
-	fill_array(p);
+	if (!format)
+		return (-1);
+	form = init_form(form);
+	va_start(form->ap, format);
 	while (*format)
 	{
-		buff = buff_until(buff, (char **)&format);
+		form->buff = buff_until(form->buff, (char **)&format);
 		if (*format)
 		{
-			buff = buff_conv(buff, (char **)&format, p, ap);
-			if (buff == NULL)
+			if (buff_conv(form, (char **)&format))
 				return (-1);
 		}
 	}
-	ft_putstr(buff);
-	i = ft_strlen(buff);
-	free(buff);
-	va_end(ap);
-	return (i);
+	ft_putstr(form->buff);
+	ret = ft_strlen(form->buff);
+	init_clear(&form);
+	return (ret);
 }
 
-char	*buff_until(char *buff, char **format)
+char			*buff_until(char *buff, char **format)
 {
-	int		pos;
-	char	*tmp;
+	char		*tmp;
+	char		*sub;
+	int			pos;
 
 	pos = ft_strfind(*format, '%');
+	if (pos == 0)
+		return (buff);
 	if (pos == -1)
-	{
-		tmp = ft_strjoin(buff, *format);
-		*format += ft_strlen(*format);
-	}
-	else
-	{
-		tmp = ft_strjoin(buff, ft_strsub(*format, 0, pos));
-		*format += pos + 1;
-	}
+		pos = ft_strlen(*format);
+	sub = ft_strsub(*format, 0, pos);
+	check_alloc((void *)sub);
+	tmp = ft_strjoin(buff, sub);
 	check_alloc((void *)tmp);
+	*format += pos;
 	free(buff);
+	free(sub);
 	return (tmp);
 }
 
-char	*buff_conv(char *buff, char **format, char *(**p)(va_list), va_list ap)
+int				buff_conv(t_form *form, char **format)
 {
-	t_opt	form_arg;
-	char	*arg;
-	char	*tmp;
-
-	tmp = buff;
-	if (start_opt(&form_arg, format) == 1)
-		return (NULL);
-	if (form_arg.conv != '%')
-		arg = p[ft_strfind("sSpdDioOuUxXcC", form_arg.conv)](ap);
-	else
-		arg = ft_strdup("%");
-	check_alloc((void *)arg);
-	buff = ft_strjoin(buff, arg);
-	check_alloc((void *)buff);
-	free(tmp);
-	free(arg);
-	return (buff);
-}
-
-void	fill_array(char *(**p)(va_list))
-{
-	p[0] = ft_conv_s;
-	p[1] = ft_conv_ws;
-	// p[2] = ft_conv_p;
-	p[3] = ft_conv_d;
-	// p[4] = ft_conv_d;
-	p[5] = ft_conv_d;
-	// p[6] = ft_conv_o;
-	// p[7] = ft_conv_o;
-	// p[8] = ft_conv_u;
-	// p[9] = ft_conv_u;
-	// p[10] = ft_conv_x;
-	// p[11] = ft_conv_x;
-	p[12] = ft_conv_c;
-	p[13] = ft_conv_wc;
+	if (!(fill_opt(form, format)))
+	{
+		init_clear(&form);
+		return (1);
+	}
+	form->p[ft_strfind("sSpdDioOuUxXcC", form->conv)](form);
+	return (0);
 }
