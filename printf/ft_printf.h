@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 16:31:01 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 16:39:27 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void			check_mod(t_form *form, char **format);
 
 int				ft_conv_c(t_form *form);
 int				ft_conv_s(t_form *form);
-int				ft_conv_ws(t_form *form);
 void 			ft_wchar_to_str(wchar_t c, char **s);
 
 void			check_alloc(void *ptr);
