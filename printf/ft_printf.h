@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 11:51:12 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 13:27:40 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void			check_opt(t_form *form, char **format);
 void			check_len_prec(t_form *form, char **format, int ftbool);
 void			check_mod(t_form *form, char **format);
 
-char			*conv_s(t_form *form);
+char			*ft_conv_c(t_form *form);
+void 			ft_wchar_to_str(wchar_t c, char **s);
 
 void			check_alloc(void *ptr);
 int				check_conv(char c);

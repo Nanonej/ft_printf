@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 10:51:00 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 13:43:35 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int		main(void)
 {
-	ft_printf("test %s", "de merde.");
+	ft_putnbr(ft_printf("%lc", L'腹'));
 	return (0);
 }
 
