@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 13:43:35 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/09 13:56:46 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int		main(void)
 {
-	ft_putnbr(ft_printf("%lc", L'腹'));
+	setlocale(LC_ALL, "en_US");
+	ft_putnbr(ft_printf("%c", L'q'));
 	return (0);
 }
 
