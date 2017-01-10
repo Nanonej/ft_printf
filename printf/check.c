@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/09 16:30:55 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/10 12:01:01 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,30 @@ void			check_alloc(void *ptr)
 
 int				check_conv(char c)
 {
-	if (ft_strfind("sSpdDioOuUxXcC%", c) == -1)
-		return (1);
-	return (0);
+	if (ft_strfind("sSpdDioOuUxXcCbB%", c) == -1)
+		return (0);
+	return (1);
 }
 
-char			*free_swap(char *forfree, char *tochange)
+int				check_conv_mod(t_form *form)
 {
-	free(forfree);
-	return (tochange);
+	size_t		n;
+
+	if (form->mod)
+	{
+		n = ft_strlen(form->mod);
+		if (form->conv == 'c' && (n > 1 || (form->mod)[0] != 'l'))
+			return (0);
+		else if (form->conv == 's' && (n > 1 || (form->mod)[0] != 'l'))
+			return (0);
+	}
+	if (ft_strfind("SDOUXCB%", form->conv) != -1 && form->mod)
+		return (0);
+	return (1);
+}
+
+char			*free_swap(char *src, char *dst)
+{
+	free(src);
+	return (dst);
 }

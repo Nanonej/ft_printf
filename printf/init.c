@@ -6,11 +6,31 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/09 20:08:18 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/10 12:02:37 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void		init_array(t_array *p)
+{
+	// p[0] = ft_conv_s;
+	// p[1] = ft_conv_s;
+	// p[2] = ft_conv_p;
+	p[3] = ft_conv_d;
+	p[4] = ft_conv_d;
+	p[5] = ft_conv_d;
+	p[6] = ft_conv_o;
+	p[7] = ft_conv_o;
+	p[8] = ft_conv_u;
+	p[9] = ft_conv_u;
+	p[10] = ft_conv_x;
+	p[11] = ft_conv_x;
+	p[12] = ft_conv_c;
+	p[13] = ft_conv_c;
+	// p[14] = ft_conv_b;
+	// p[15] = ft_conv_b;
+}
 
 t_form			*init_form(t_form *form)
 {
@@ -23,24 +43,6 @@ t_form			*init_form(t_form *form)
 	return (form);
 }
 
-void			init_array(t_array *p)
-{
-	p[0] = ft_conv_s;
-	p[1] = ft_conv_s;
-	// p[2] = ft_conv_p;
-	p[3] = ft_conv_d;
-	p[4] = ft_conv_d;
-	p[5] = ft_conv_d;
-	// p[6] = ft_conv_o;
-	// p[7] = ft_conv_o;
-	// p[8] = ft_conv_u;
-	// p[9] = ft_conv_u;
-	// p[10] = ft_conv_x;
-	// p[11] = ft_conv_x;
-	p[12] = ft_conv_c;
-	p[13] = ft_conv_c;
-}
-
 void			init_opt(t_form *form)
 {
 	form->arg = NULL;
@@ -49,10 +51,10 @@ void			init_opt(t_form *form)
 	form->zero = 0;
 	form->space = 0;
 	form->hash = 0;
-	form->len = 0;
+	form->len = -1;
 	form->prec = -1;
 	form->mod = NULL;
-	form->conv = 0;
+	form->conv = '\0';
 }
 
 void			init_clear(t_form **form)
@@ -60,6 +62,8 @@ void			init_clear(t_form **form)
 	va_end((*form)->ap);
 	if ((*form)->buff)
 		free((*form)->buff);
+	if ((*form)->arg)
+		free((*form)->arg);
 	if ((*form)->mod)
 		free((*form)->mod);
 	init_opt(*form);
