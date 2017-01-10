@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 09:31:28 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/10 11:54:32 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/10 12:17:55 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,12 @@ int				ft_conv_x(t_form *form)
 			tmp++;
 		}
 	}
+	return ((form->arg) ? 1 : 0);
+}
+
+int				ft_conv_b(t_form *form)
+{
+	form->arg = ft_itoa_base(ft_conv_uintmax(form), 2, 0);
+	check_alloc((void *)form->arg);
 	return ((form->arg) ? 1 : 0);
 }
