@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/10 12:17:22 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/10 13:47:39 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		init_array(t_array *p)
 {
 	// p[0] = ft_conv_s;
 	// p[1] = ft_conv_s;
-	// p[2] = ft_conv_p;
+	p[2] = ft_conv_x;
 	p[3] = ft_conv_d;
 	p[4] = ft_conv_d;
 	p[5] = ft_conv_d;
