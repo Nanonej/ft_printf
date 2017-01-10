@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/10 13:23:36 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/10 17:20:16 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void			init_clear(t_form **form);
 int				fill_opt(t_form *form, char **format);
 
 int				ft_conv_c(t_form *form);
+int				ft_conv_pct(t_form *form);
 
 int				ft_conv_d(t_form *form);
 int				ft_conv_u(t_form *form);

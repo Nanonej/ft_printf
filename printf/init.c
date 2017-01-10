@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/10 13:47:39 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/10 17:14:08 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void		init_array(t_array *p)
 	p[13] = ft_conv_c;
 	p[14] = ft_conv_b;
 	p[15] = ft_conv_b;
+	p[16] = ft_conv_pct;
 }
 
 t_form			*init_form(t_form *form)
