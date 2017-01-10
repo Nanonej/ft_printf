@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/10 13:51:02 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/10 13:54:28 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int				main(void)
 	setlocale(LC_ALL, "en_US");
 	int			a = 42;
 	char		b[0];
+
+	printf("\n");
 
 	// ft_putnbr(ft_printf("Test 00 - %%\n"));
 	// ft_putendl("");
@@ -37,7 +39,7 @@ int				main(void)
 	// ft_putendl("");
 
 
-	ft_putnbr(ft_printf("Test 03 - p: %p\n", b));
+	ft_putnbr(ft_printf("Test 03 - p: 0x%p\n", b));
 	ft_putendl("");
 	ft_putnbr(printf("Test 03 - p: %p\n", b));
 	ft_putendl("");
