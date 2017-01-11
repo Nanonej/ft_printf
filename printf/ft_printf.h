@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 13:40:39 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 22:35:01 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 # include <stdlib.h>
 # include <wchar.h>
 # include <stdio.h> ////////////////////////////////////////////////////////////
+
+typedef enum	e_mod
+{
+	H = 1,
+	L,
+	UL,
+	J,
+	Z,
+	HH,
+	LL,
+}				t_mod;
 
 typedef struct	s_form
 {
@@ -33,7 +44,7 @@ typedef struct	s_form
 	char		hash;
 	int			len;
 	int			prec;
-	char		*mod;
+	int			mod;
 	char		conv;
 }				t_form;
 
@@ -62,7 +73,7 @@ int				ft_conv_b(t_form *form);
 
 void			check_alloc(void *ptr);
 int				check_conv(char c);
-void			check_conv_mod(t_form *form);
+void			check_conv_mod(t_form *form, char *mod);
 char			*free_swap(char *src, char *dst);
 
 #endif

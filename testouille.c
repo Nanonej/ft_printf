@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 14:46:49 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 23:42:45 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ int			main(void)
 
 	ft_putendl("Test 00 - %:");
 	i = ft_printf("ft_printf: %%\n");
-	i -= ft_printf("printf: %%\n");
+	i -= printf("printf: %%\n");
 	printf("Diff RET: %d\n", i - 3);
 	ft_putendl("");
 	check_error(i - 3);
 
 	// ft_putendl("Test 02 - %s:");
 	// i = ft_printf("ft_printf: %s\n", "OK");
-	// i -= ft_printf("printf: %s\n", "OK");
+	// i -= printf("printf: %s\n", "OK");
 	// printf("Diff : %d\n", i);
 	// ft_putendl("");
 	// check_error(i - 3);
 
 	// ft_putendl("Test 02 - %S:");
 	// i = ft_printf("ft_printf: %S\n", L"▄︻̷̿┻̿═━一");
-	// i -= ft_printf("printf: %s\n", "OK");
+	// i -= printf("printf: %s\n", "OK");
 	// printf("Diff : %d\n", i);
 	// ft_putendl("");
 	// check_error(i - 3);

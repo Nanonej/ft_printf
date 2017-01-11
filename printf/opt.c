@@ -6,13 +6,13 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 19:16:14 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 13:36:08 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 23:41:43 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		check_mod(t_form *form, char **format)
+static int		check_mod(t_form *form, char **format)
 {
 	int			i;
 	char		*tmp;
@@ -24,8 +24,21 @@ static void		check_mod(t_form *form, char **format)
 		i++;
 		tmp++;
 	}
-	check_alloc((void *)(form->mod = ft_strsub(*format, 0, i)));
+	check_alloc((void *)(tmp = ft_strsub(*format, 0, i)));
 	*format += i;
+	if (ft_strfind("-+0 #123456789.", **format) == -1)
+	{
+		if (!(check_conv((form->conv = **format))))
+		{
+			free(tmp);
+			return (0);
+		}
+		if (*tmp)
+			check_conv_mod(form, tmp);
+	}
+	free(tmp);
+	(*format)++;
+	return (1);
 }
 
 static void		check_prec(t_form *form, char **format)
@@ -33,8 +46,6 @@ static void		check_prec(t_form *form, char **format)
 	int			nb;
 	int			count;
 
-	if (**format != '.')
-		return ;
 	(*format)++;
 	form->prec = 0;
 	if (**format == '*')
@@ -94,23 +105,22 @@ static void		check_opt(t_form *form, char **format)
 
 int				fill_opt(t_form *form, char **format)
 {
-	check_opt(form, format);
-	check_len(form, format);
-	check_prec(form, format);
-	check_mod(form, format);
-	form->conv = **format;
-	if (!check_conv(form->conv))
-		return (0);
-	if (form->mod)
+	while (ft_strfind("-+0 #123456789.lhjzL", **format) != -1)
 	{
-		if ((form->mod)[0] == 'L' && ft_strfind("eEfF", form->conv) == -1)
-		{
-			free(form->mod);
-			form->mod = NULL;
-		}
+		if (ft_strfind("-+0 #", **format) != -1)
+			check_opt(form, format);
+		else if (ft_strfind("123456789", **format) != -1)
+			check_len(form, format);
+		else if (**format == '.')
+			check_prec(form, format);
+		else
+			if (check_mod(form, format))
+				return (1);
 	}
-	if (form->mod)
-		check_conv_mod(form);
-	(*format)++;
-	return (1);
+	if (!form->conv && check_conv((form->conv = **format)))
+	{
+		(*format)++;
+		return (1);
+	}
+	return (0);
 }

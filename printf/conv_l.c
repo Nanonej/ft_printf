@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 13:39:04 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 23:01:49 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				ft_conv_c(t_form *form)
 		check_alloc((void *)form->arg);
 		(form->arg)[0] = c;
 	}
-	else if (form->conv == 'c' || form->conv == 'C')
+	else
 	{
 		lc = (wchar_t)va_arg(form->ap, wint_t);
 		ft_wchar_to_str(lc, &(form->arg));

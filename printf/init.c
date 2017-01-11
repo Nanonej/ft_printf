@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 13:38:46 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 21:43:35 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			init_opt(t_form *form)
 	form->hash = 0;
 	form->len = -1;
 	form->prec = -1;
-	form->mod = NULL;
+	form->mod = 0;
 	form->conv = '\0';
 }
 
@@ -69,8 +69,6 @@ void			init_clear(t_form **form)
 		free((*form)->buff);
 	if ((*form)->arg)
 		free((*form)->arg);
-	if ((*form)->mod)
-		free((*form)->mod);
 	init_opt(*form);
 	free(*form);
 	*form = NULL;

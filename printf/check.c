@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 13:39:26 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 23:11:42 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,18 @@ int				check_conv(char c)
 	return (1);
 }
 
-void			check_conv_mod(t_form *form)
+void			check_conv_mod(t_form *form, char *mod)
 {
-	if (form->conv == 'c')
-	{
-		if (ft_strfind(form->mod, 'l') != -1 && !ft_strequ(form->mod, "ll"))
-		{
-			form->mod = free_swap(form->mod, ft_strdup("l"));
-			check_alloc((void *)form->mod);
-		}
-		else
-		{
-			free(form->mod);
-			form->mod = NULL;
-		}
-	}
+	if (ft_strlen(mod) == 1)
+		form->mod = ft_strfind("ahlLjz", *mod);
+	else if (ft_strlen(mod) == 2 && ft_strequ("LL", mod))
+		form->mod = LL;
+	else if (ft_strlen(mod) == 2 && ft_strequ("HH", mod))
+		form->mod = HH;
 	else
-	{
-		if (ft_strlen(form->mod) >= 2 && !ft_strequ(form->mod, "ll") && \
-		!ft_strequ(form->mod, "hh"))
-		{
-			form->mod = free_swap(form->mod, ft_strdup("j"));
-			check_alloc((void *)form->mod);
-		}
-	}
+		form->mod = J;
+	if (form->mod == L && ft_strfind("fFeE", form->conv) == -1)
+		form->mod = 0;
 }
 
 char			*free_swap(char *src, char *dst)

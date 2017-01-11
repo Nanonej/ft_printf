@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 17:31:24 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/10 12:01:46 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 23:10:01 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ intmax_t		ft_conv_intmax(t_form *form)
 	{
 		if (!form->mod)
 			return (va_arg(form->ap, int));
-		else if (ft_strequ(form->mod, "hh"))
+		else if (form->mod == HH)
 			return ((signed char)va_arg(form->ap, int));
-		else if ((form->mod)[0] == 'h')
+		else if (form->mod == H)
 			return ((short)va_arg(form->ap, int));
-		else if ((form->mod)[0] == 'z')
+		else if (form->mod == Z)
 			return (va_arg(form->ap, size_t));
-		else if ((form->mod)[0] == 'l')
+		else if (form->mod == L)
 			return (va_arg(form->ap, long int));
-		else if (ft_strequ(form->mod, "ll"))
+		else if (form->mod == LL)
 			return (va_arg(form->ap, long long int));
-		else if ((form->mod)[0] == 'j')
+		else
 			return (va_arg(form->ap, intmax_t));
 	}
 	return (va_arg(form->ap, long int));
@@ -57,17 +57,17 @@ uintmax_t		ft_conv_uintmax(t_form *form)
 	{
 		if (!form->mod)
 			return (va_arg(form->ap, unsigned int));
-		else if (ft_strequ(form->mod, "hh"))
+		else if (form->mod == HH)
 			return ((unsigned char)va_arg(form->ap, unsigned int));
-		else if ((form->mod)[0] == 'h')
+		else if (form->mod == H)
 			return ((unsigned short)va_arg(form->ap, unsigned int));
-		else if ((form->mod)[0] == 'z')
+		else if (form->mod == Z)
 			return (va_arg(form->ap, size_t));
-		else if ((form->mod)[0] == 'l')
+		else if (form->mod == L)
 			return (va_arg(form->ap, unsigned long int));
-		else if (ft_strequ(form->mod, "ll"))
+		else if (form->mod == LL)
 			return (va_arg(form->ap, unsigned long long int));
-		else if ((form->mod)[0] == 'j')
+		else
 			return (va_arg(form->ap, uintmax_t));
 	}
 	return (va_arg(form->ap, unsigned long int));
