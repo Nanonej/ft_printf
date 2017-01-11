@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 14:12:52 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/11 14:27:54 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,35 +129,35 @@ int		main(void)
 	printf("Test %%+ 08.2s - %+ 08.2s\n", "POUET");
 	printf("Test %%- 8.2s - %- 08.2s\n\n", "POUET");
 
-	printf("Test %%-8C - %-8C\n", L"POUET");
-	printf("Test %%+8C - %+8C\n", L"POUET");
-	printf("Test %%08C - %08C\n", L"POUET");
-	printf("Test %% 8C - % 8C\n", L"POUET");
-	printf("Test %%#C - %#C\n", L"POUET");
-	printf("Test %%8C - %8C\n", L"POUET");
-	printf("Test %%8.2C - %8.2C\n\n", L"POUET");
-	printf("Test %%+ 8C - %+ 8C\n", L"POUET");
-	printf("Test %%- 8C - %- 8C\n", L"POUET");
-	printf("Test %%+-8C - %+-8C\n", L"POUET");
-	printf("Test %%-+ 8C - %-+ 8C\n", L"POUET");
-	printf("Test %%+08C - %+08C\n", L"POUET");
-	printf("Test %%-08C - %-08C\n", L"POUET");
-	printf("Test %%0 8C - %0 8C\n", L"POUET");
-	printf("Test %%+-08C - %+-08C\n", L"POUET");
-	printf("Test %%+- 08C - %+- 08C\n", L"POUET");
-	printf("Test %%+ 08C - %+ 08C\n", L"POUET");
-	printf("Test %%- 8C - %- 08C\n", L"POUET");
-	printf("Test %%+ 8.2C - %+ 8.2C\n", L"POUET");
-	printf("Test %%- 8.2C - %- 8.2C\n", L"POUET");
-	printf("Test %%+-8.2C - %+-8.2C\n", L"POUET");
-	printf("Test %%-+ 8.2C - %-+ 8.2C\n", L"POUET");
-	printf("Test %%+08.2C - %+08.2C\n", L"POUET");
-	printf("Test %%-08.2C - %-08.2C\n", L"POUET");
-	printf("Test %%0 8.2C - %0 8.2C\n", L"POUET");
-	printf("Test %%+-08.2C - %+-08.2C\n", L"POUET");
-	printf("Test %%+- 08.2C - %+- 08.2C\n", L"POUET");
-	printf("Test %%+ 08.2C - %+ 08.2C\n", L"POUET");
-	printf("Test %%- 8.2C - %- 08.2C\n\n", L"POUET");
+	printf("Test %%-8S - %-8S\n", L"POUET");
+	printf("Test %%+8S - %+8S\n", L"POUET");
+	printf("Test %%08S - %08S\n", L"POUET");
+	printf("Test %% 8S - % 8S\n", L"POUET");
+	printf("Test %%#S - %#S\n", L"POUET");
+	printf("Test %%8S - %8S\n", L"POUET");
+	printf("Test %%8.2S - %8.2S\n\n", L"POUET");
+	printf("Test %%+ 8S - %+ 8S\n", L"POUET");
+	printf("Test %%- 8S - %- 8S\n", L"POUET");
+	printf("Test %%+-8S - %+-8S\n", L"POUET");
+	printf("Test %%-+ 8S - %-+ 8S\n", L"POUET");
+	printf("Test %%+08S - %+08S\n", L"POUET");
+	printf("Test %%-08S - %-08S\n", L"POUET");
+	printf("Test %%0 8S - %0 8S\n", L"POUET");
+	printf("Test %%+-08S - %+-08S\n", L"POUET");
+	printf("Test %%+- 08S - %+- 08S\n", L"POUET");
+	printf("Test %%+ 08S - %+ 08S\n", L"POUET");
+	printf("Test %%- 8S - %- 08S\n", L"POUET");
+	printf("Test %%+ 8.2S - %+ 8.2S\n", L"POUET");
+	printf("Test %%- 8.2S - %- 8.2S\n", L"POUET");
+	printf("Test %%+-8.2S - %+-8.2S\n", L"POUET");
+	printf("Test %%-+ 8.2S - %-+ 8.2S\n", L"POUET");
+	printf("Test %%+08.2S - %+08.2S\n", L"POUET");
+	printf("Test %%-08.2S - %-08.2S\n", L"POUET");
+	printf("Test %%0 8.2S - %0 8.2S\n", L"POUET");
+	printf("Test %%+-08.2S - %+-08.2S\n", L"POUET");
+	printf("Test %%+- 08.2S - %+- 08.2S\n", L"POUET");
+	printf("Test %%+ 08.2S - %+ 08.2S\n", L"POUET");
+	printf("Test %%- 8.2S - %- 08.2S\n\n", L"POUET");
 
 	printf("Test %%-8p - %-8p\n", ptr);
 	printf("Test %%+8p - %+8p\n", ptr);

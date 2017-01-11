@@ -6,185 +6,249 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 13:36:45 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 14:46:49 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf/ft_printf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 #include <fcntl.h>
 #include <locale.h>
 
-int				main(void)
+void 		check_error(int	i)
+{
+	if (i != 0)
+	{
+		ft_putendl("ERROR DIFF");
+		exit(EXIT_FAILURE);
+	}
+}
+
+int			main(void)
 {
 	setlocale(LC_ALL, "en_US");
 	int			a = 42;
 	char		b[0];
+	int			i;
 
-	printf("\n");
-	ft_putnbr(ft_printf("Test 00 - %%%%\n"));
+	ft_putendl("Test 00 - %:");
+	i = ft_printf("ft_printf: %%\n");
+	i -= ft_printf("printf: %%\n");
+	printf("Diff RET: %d\n", i - 3);
 	ft_putendl("");
-	ft_putnbr(printf("Test 00 - %%%%\n"));
-	ft_putendl("");
+	check_error(i - 3);
 
-	// ft_putnbr(ft_printf("Test 01 - %%s: %s\n", "OK"));
+	// ft_putendl("Test 02 - %s:");
+	// i = ft_printf("ft_printf: %s\n", "OK");
+	// i -= ft_printf("printf: %s\n", "OK");
+	// printf("Diff : %d\n", i);
 	// ft_putendl("");
-	// ft_putnbr(printf("Test 01 - %%s: %s\n", "OK"));
+	// check_error(i - 3);
+
+	// ft_putendl("Test 02 - %S:");
+	// i = ft_printf("ft_printf: %S\n", L"▄︻̷̿┻̿═━一");
+	// i -= ft_printf("printf: %s\n", "OK");
+	// printf("Diff : %d\n", i);
 	// ft_putendl("");
+	// check_error(i - 3);
+
+	// ft_putendl("Test 03 - %p:");
+	// i = ft_printf("ft_printf: %p\n", b);
+	// i -= printf("printf: %p\n", b);
+	// printf("Diff : %d\n", i - 3);
+	// ft_putendl("");
+	// check_error(i - 3);
+
+	ft_putendl("Test 04 - %d:");
+	i = ft_printf("ft_printf: %d\n", a);
+	i -= printf("printf: %d\n", a);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 05 - %D:");
+	i = ft_printf("ft_printf: %D\n", a);
+	i -= printf("printf: %D\n", a);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 06 - %i:");
+	i = ft_printf("ft_printf: %i\n", a);
+	i -= printf("printf: %i\n", a);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 07 - %o:");
+	i = ft_printf("ft_printf: %o\n", 34);
+	i -= printf("printf: %o\n", 34);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 08 - %O:");
+	i = ft_printf("ft_printf: %O\n", 34);
+	i -= printf("printf: %O\n", 34);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 09 - %u:");
+	i = ft_printf("ft_printf: %u\n", (unsigned int)4200000000);
+	i -= printf("printf: %u\n", (unsigned int)4200000000);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 10 - %U:");
+	i = ft_printf("ft_printf: %U\n", (unsigned int)4200000000);
+	i -= printf("printf: %U\n", (unsigned int)4200000000);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 11 - %x:");
+	i = ft_printf("ft_printf: %x\n", (unsigned)a);
+	i -= printf("printf: %x\n", (unsigned)a);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 12 - %X:");
+	i = ft_printf("ft_printf: %X\n", (unsigned)a);
+	i -= printf("printf: %X\n", (unsigned)a);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 13 - %c:");
+	i = ft_printf("ft_printf: %c\n", 'a');
+	i -= printf("printf: %c\n", 'a');
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	ft_putendl("Test 14 - %C:");
+	i = ft_printf("ft_printf: %C\n", L'腹');
+	i -= printf("printf: %C\n", L'腹');
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
+
+	// ft_putendl("Test 15 - %#o:");
+	// i = ft_printf("ft_printf: %#o\n", 34);
+	// i -= printf("printf: %#o\n", 34);
+	// printf("Diff : %d\n", i - 3);
+	// ft_putendl("");
+	// check_error(i - 3);
 	//
-	// ft_putnbr(ft_printf("Test 02 - %%S: %S\n", L"▄︻̷̿┻̿═━一"));
+	// ft_putendl("Test 16 - %#x:");
+	// i = ft_printf("ft_printf: %#x\n", 42);
+	// i -= printf("printf: %#x\n", 42);
+	// printf("Diff : %d\n", i - 3);
 	// ft_putendl("");
-	// ft_putnbr(printf("Test 02 - %%S: %S\n", L"▄︻̷̿┻̿═━一"));
-	// ft_putendl("");
-
-
-	ft_putnbr(ft_printf("Test 03 - %%p: 0x%p\n", b));
-	ft_putendl("");
-	ft_putnbr(printf("Test 03 - %%p: %p\n", b));
-	ft_putendl("");
-
-
-	ft_putnbr(ft_printf("Test 04 - %%d: %d\n", a));
-	ft_putendl("");
-	ft_putnbr(printf("Test 04 - %%d: %d\n", a));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 05 - %%D: %D\n", a));
-	ft_putendl("");
-	ft_putnbr(printf("Test 05 - %%D: %D\n", a));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 06 - %%i: %i\n", a));
-	ft_putendl("");
-	ft_putnbr(printf("Test 06 - %%i: %i\n", a));
-	ft_putendl("");
-
-
-	ft_putnbr(ft_printf("Test 07 - %%o: %o\n", 34));
-	ft_putendl("");
-	ft_putnbr(printf("Test 07 - %%o: %o\n", 34));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 08 - %%O: %O\n", 34));
-	ft_putendl("");
-	ft_putnbr(printf("Test 08 - %%O: %O\n", 34));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 09 - %%u: %u\n", (unsigned int)4200000000));
-	ft_putendl("");
-	ft_putnbr(printf("Test 09 - %%u: %u\n", (unsigned int)4200000000));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 10 - %%U: %U\n", (unsigned int)4200000000));
-	ft_putendl("");
-	ft_putnbr(printf("Test 10 - %%U: %U\n", (unsigned int)4200000000));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 11 - %%x: %x\n", 42));
-	ft_putendl("");
-	ft_putnbr(printf("Test 11 - %%x: %x\n", 42));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("test 12 - X: %X\n", 42));
-	ft_putendl("");
-	ft_putnbr(printf("test 12 - X: %X\n", 42));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 13 - %%c: %c\n", 'A'));
-	ft_putendl("");
-	ft_putnbr(printf("Test 13 - %%c: %c\n", 'A'));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 14 - %%C: %C\n", L'腹'));
-	ft_putendl("");
-	ft_putnbr(printf("Test 14 - %%C: %C\n", L'腹'));
-	ft_putendl("");
+	// check_error(i - 3);
 	//
+	// ft_putendl("Test 17 - %#X:");
+	// i = ft_printf("ft_printf: %#X\n", 42);
+	// i -= printf("printf: %#X\n", 42);
+	// printf("Diff : %d\n", i - 3);
+	// ft_putendl("");
+	// check_error(i - 3);
 	//
-	// ft_putnbr(ft_printf("Test 15 - %%#o: %#o\n", 34));
+	// ft_putendl("Test 18 - %08d:");
+	// i = ft_printf("ft_printf: %08d\n", 42);
+	// i -= printf("printf: %08d\n", 42);
+	// printf("Diff : %d\n", i - 3);
 	// ft_putendl("");
-	// ft_putnbr(printf("Test 15 - %%#o: %#o\n", 34));
-	// ft_putendl("");
+	// check_error(i - 3);
 	//
-	// ft_putnbr(ft_printf("Test 16 - %%#x: %#x\n", 42));
+	// ft_putendl("Test 19 - %-8d:");
+	// i = ft_printf("ft_printf: %-8d\n", 42);
+	// i -= printf("printf: %-8d\n", 42);
+	// printf("Diff : %d\n", i - 3);
 	// ft_putendl("");
-	// ft_putnbr(printf("Test 16 - %%#x: %#x\n", 42));
-	// ft_putendl("");
+	// check_error(i - 3);
 	//
-	// ft_putnbr(ft_printf("Test 17 - %%#X: %#X\n", 42));
+	// ft_putendl("Test 20 - %+8d:");
+	// i = ft_printf("ft_printf: %+8d\n", 42);
+	// i -= printf("printf: %+8d\n", 42);
+	// printf("Diff : %d\n", i - 3);
 	// ft_putendl("");
-	// ft_putnbr(printf("Test 17 - %%#X: %#X\n", 42));
-	// ft_putendl("");
+	// check_error(i - 3);
 	//
-	//
-	// ft_putnbr(ft_printf("Test 18 - %%08d: %08d\n", 42));
+	// ft_putendl("Test 21 - % 8d:");
+	// i = ft_printf("ft_printf: % 8d\n", 42);
+	// i -= printf("printf: % 8d\n", 42);
+	// printf("Diff : %d\n", i - 3);
 	// ft_putendl("");
-	// ft_putnbr(printf("Test 18 - %%08d: %08d\n", 42));
+	// check_error(i - 3);
+
+	// ft_putendl("Test 22 - %8d:");
+	// i = ft_printf("ft_printf: %8d\n", 42);
+	// i -= printf("printf: %8d\n", 42);
+	// printf("Diff : %d\n", i - 3);
 	// ft_putendl("");
-	//
-	// ft_putnbr(ft_printf("Test 19 - %%-8d: %-8d\n", 42));
+	// check_error(i - 3);
+
+	// ft_putendl("Test 23 - %.2f:");
+	// i = ft_printf("ft_printf: %.2f\n", 42.314159265359);
+	// i -= printf("printf: %.2f\n", 42.314159265359);
+	// printf("Diff : %d\n", i - 3);
 	// ft_putendl("");
-	// ft_putnbr(printf("Test 19 - %%-8d: %-8d\n", 42));
-	// ft_putendl("");
-	//
-	// ft_putnbr(ft_printf("Test 20 - %%+8d: %+8d\n", 42));
-	// ft_putendl("");
-	// ft_putnbr(printf("Test 20 - %%+8d: %+8d\n", 42));
-	// ft_putendl("");
-	//
-	// ft_putnbr(ft_printf("Test 21 - %% 8d: % 8d\n", 42));
-	// ft_putendl("");
-	// ft_putnbr(printf("Test 21 - %% 8d: % 8d\n", 42));
-	// ft_putendl("");
-	//
-	//
-	// ft_putnbr(ft_printf("Test 22 - %%8d: %8d\n", 42));
-	// ft_putendl("");
-	// ft_putnbr(printf("Test 22 - %%8d: %8d\n", 42));
-	// ft_putendl("");
+	// check_error(i - 3);
 
+	ft_putendl("Test 24 - %hhd:");
+	i = ft_printf("ft_printf: %hhd\n", (char)'a');
+	i -= printf("printf: %hhd\n", (char)'a');
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
 
-	// ft_printf("Test 23 - %%.2f: %.2f\n", 42.314159265359);
+	ft_putendl("Test 25 - %hd:");
+	i = ft_printf("ft_printf: %hd\n", (short)4200);
+	i -= printf("printf: %hd\n", (short)4200);
+	printf("Diff : %d\n", i - 3);
+	ft_putendl("");
+	check_error(i - 3);
 
-	ft_putnbr(ft_printf("Test 24 - %%hhd: %hhd\n", (char)'*'));
+	ft_putendl("Test 26 - %ld:");
+	i = ft_printf("ft_printf: %ld\n", (long)420000000);
+	i -= printf("printf: %ld\n", (long)420000000);
+	printf("Diff : %d\n", i - 3);
 	ft_putendl("");
-	ft_putnbr(printf("Test 24 - %%hhd: %hhd\n", (char)'*'));
-	ft_putendl("");
+	check_error(i - 3);
 
-	ft_putnbr(ft_printf("Test 25 - %%hd: %hd\n", (short)4200));
+	ft_putendl("Test 27 - %lld:");
+	i = ft_printf("ft_printf: %lld\n", (long long)420000000);
+	i -= printf("printf: %lld\n", (long long)420000000);
+	printf("Diff : %d\n", i - 3);
 	ft_putendl("");
-	ft_putnbr(printf("Test 25 - %%hd: %hd\n", (short)4200));
-	ft_putendl("");
+	check_error(i - 3);
 
-	ft_putnbr(ft_printf("Test 26 - %%ld: %ld\n", (long)420000000));
+	ft_putendl("Test 28 - %jd:");
+	i = ft_printf("ft_printf: %jd\n", (intmax_t)420000000);
+	i -= printf("printf: %jd\n", (intmax_t)420000000);
+	printf("Diff : %d\n", i - 3);
 	ft_putendl("");
-	ft_putnbr(printf("Test 26 - %%ld: %ld\n", (long)420000000));
-	ft_putendl("");
+	check_error(i - 3);
 
-	ft_putnbr(ft_printf("Test 27 - %%lld: %lld\n", (long long)4223372036854775807));
+	ft_putendl("Test 29 - %zd:");
+	i = ft_printf("ft_printf: %zd\n", (size_t)42);
+	i -= printf("printf: %zd\n", (size_t)42);
+	printf("Diff : %d\n", i - 3);
 	ft_putendl("");
-	ft_putnbr(printf("Test 27 - %%lld: %lld\n", (long long)4223372036854775807));
-	ft_putendl("");
+	check_error(i - 3);
 
-	ft_putnbr(ft_printf("Test 28 - %%jd: %jd\n", (intmax_t)42));
-	ft_putendl("");
-	ft_putnbr(printf("Test 28 - %%jd: %jd\n", (intmax_t)42));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 29 - %%zd: %zd\n", (size_t)42));
-	ft_putendl("");
-	ft_putnbr(printf("Test 29 - %%zd: %zd\n", (size_t)42));
-	ft_putendl("");
-
-
-	ft_putnbr(ft_printf("Test 30 - %%b: %b\n", a));
-	ft_putendl("");
-
-	ft_putnbr(ft_printf("Test 31 - %%B: %B\n", a));
-	ft_putendl("");
-
-	// printf("Test WTF DUDE ?!: %d\n\n", 42);
-
-	printf("\n");
 	return (0);
 }
+
+// printf("Minus : %c\n", form->minus);
+// printf("Plus : %c\n", form->plus);
+// printf("Zero : %c\n", form->zero);
+// printf("Space : %c\n", form->space);
+// printf("hash : %c\n", form->hash);
+// printf("len : %d\n", form->len);
+// printf("prec : %d\n", form->prec);
+// printf("mod : %s\n", form->mod);
+// printf("conv : %c\n", form->conv);
