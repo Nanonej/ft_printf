@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 14:05:44 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/11 14:12:52 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,65 +339,65 @@ int		main(void)
 	printf("Test %%+ 08.2O - %+ 08.2O\n", 34);
 	printf("Test %%- 8.2O - %- 08.2O\n\n", 34);
 
-	printf("Test %%-8u - %-8u\n", (unsigned int)4200000000));
-	printf("Test %%+8u - %+8u\n", (unsigned int)4200000000));
-	printf("Test %%08u - %08u\n", (unsigned int)4200000000));
-	printf("Test %% 8u - % 8u\n", (unsigned int)4200000000));
-	printf("Test %%#u - %#u\n", (unsigned int)4200000000));
-	printf("Test %%8u - %8u\n", (unsigned int)4200000000));
-	printf("Test %%8.2u - %8.2u\n\n", (unsigned int)4200000000));
-	printf("Test %%+ 8u - %+ 8u\n", (unsigned int)4200000000));
-	printf("Test %%- 8u - %- 8u\n", (unsigned int)4200000000));
-	printf("Test %%+-8u - %+-8u\n", (unsigned int)4200000000));
-	printf("Test %%-+ 8u - %-+ 8u\n", (unsigned int)4200000000));
-	printf("Test %%+08u - %+08u\n", (unsigned int)4200000000));
-	printf("Test %%-08u - %-08u\n", (unsigned int)4200000000));
-	printf("Test %%0 8u - %0 8u\n", (unsigned int)4200000000));
-	printf("Test %%+-08u - %+-08u\n", (unsigned int)4200000000));
-	printf("Test %%+- 08u - %+- 08u\n", (unsigned int)4200000000));
-	printf("Test %%+ 08u - %+ 08u\n", (unsigned int)4200000000));
-	printf("Test %%- 8u - %- 08u\n", (unsigned int)4200000000));
-	printf("Test %%+ 8.2u - %+ 8.2u\n", (unsigned int)4200000000));
-	printf("Test %%- 8.2u - %- 8.2u\n", (unsigned int)4200000000));
-	printf("Test %%+-8.2u - %+-8.2u\n", (unsigned int)4200000000));
-	printf("Test %%-+ 8.2u - %-+ 8.2u\n", (unsigned int)4200000000));
-	printf("Test %%+08.2u - %+08.2u\n", (unsigned int)4200000000));
-	printf("Test %%-08.2u - %-08.2u\n", (unsigned int)4200000000));
-	printf("Test %%0 8.2u - %0 8.2u\n", (unsigned int)4200000000));
-	printf("Test %%+-08.2u - %+-08.2u\n", (unsigned int)4200000000));
-	printf("Test %%+- 08.2u - %+- 08.2u\n", (unsigned int)4200000000));
-	printf("Test %%+ 08.2u - %+ 08.2u\n", (unsigned int)4200000000));
-	printf("Test %%- 8.2u - %- 08.2u\n\n", (unsigned int)4200000000));
+	printf("Test %%-8u - %-8u\n", (unsigned int)4200000000);
+	printf("Test %%+8u - %+8u\n", (unsigned int)4200000000);
+	printf("Test %%08u - %08u\n", (unsigned int)4200000000);
+	printf("Test %% 8u - % 8u\n", (unsigned int)4200000000);
+	printf("Test %%#u - %#u\n", (unsigned int)4200000000);
+	printf("Test %%8u - %8u\n", (unsigned int)4200000000);
+	printf("Test %%8.2u - %8.2u\n\n", (unsigned int)4200000000);
+	printf("Test %%+ 8u - %+ 8u\n", (unsigned int)4200000000);
+	printf("Test %%- 8u - %- 8u\n", (unsigned int)4200000000);
+	printf("Test %%+-8u - %+-8u\n", (unsigned int)4200000000);
+	printf("Test %%-+ 8u - %-+ 8u\n", (unsigned int)4200000000);
+	printf("Test %%+08u - %+08u\n", (unsigned int)4200000000);
+	printf("Test %%-08u - %-08u\n", (unsigned int)4200000000);
+	printf("Test %%0 8u - %0 8u\n", (unsigned int)4200000000);
+	printf("Test %%+-08u - %+-08u\n", (unsigned int)4200000000);
+	printf("Test %%+- 08u - %+- 08u\n", (unsigned int)4200000000);
+	printf("Test %%+ 08u - %+ 08u\n", (unsigned int)4200000000);
+	printf("Test %%- 8u - %- 08u\n", (unsigned int)4200000000);
+	printf("Test %%+ 8.2u - %+ 8.2u\n", (unsigned int)4200000000);
+	printf("Test %%- 8.2u - %- 8.2u\n", (unsigned int)4200000000);
+	printf("Test %%+-8.2u - %+-8.2u\n", (unsigned int)4200000000);
+	printf("Test %%-+ 8.2u - %-+ 8.2u\n", (unsigned int)4200000000);
+	printf("Test %%+08.2u - %+08.2u\n", (unsigned int)4200000000);
+	printf("Test %%-08.2u - %-08.2u\n", (unsigned int)4200000000);
+	printf("Test %%0 8.2u - %0 8.2u\n", (unsigned int)4200000000);
+	printf("Test %%+-08.2u - %+-08.2u\n", (unsigned int)4200000000);
+	printf("Test %%+- 08.2u - %+- 08.2u\n", (unsigned int)4200000000);
+	printf("Test %%+ 08.2u - %+ 08.2u\n", (unsigned int)4200000000);
+	printf("Test %%- 8.2u - %- 08.2u\n\n", (unsigned int)4200000000);
 
-	printf("Test %%-8U - %-8U\n", (unsigned int)4200000000));
-	printf("Test %%+8U - %+8U\n", (unsigned int)4200000000));
-	printf("Test %%08U - %08U\n", (unsigned int)4200000000));
-	printf("Test %% 8U - % 8U\n", (unsigned int)4200000000));
-	printf("Test %%#U - %#U\n", (unsigned int)4200000000));
-	printf("Test %%8U - %8U\n", (unsigned int)4200000000));
-	printf("Test %%8.2U - %8.2U\n\n", (unsigned int)4200000000));
-	printf("Test %%+ 8U - %+ 8U\n", (unsigned int)4200000000));
-	printf("Test %%- 8U - %- 8U\n", (unsigned int)4200000000));
-	printf("Test %%+-8U - %+-8U\n", (unsigned int)4200000000));
-	printf("Test %%-+ 8U - %-+ 8U\n", (unsigned int)4200000000));
-	printf("Test %%+08U - %+08U\n", (unsigned int)4200000000));
-	printf("Test %%-08U - %-08U\n", (unsigned int)4200000000));
-	printf("Test %%0 8U - %0 8U\n", (unsigned int)4200000000));
-	printf("Test %%+-08U - %+-08U\n", (unsigned int)4200000000));
-	printf("Test %%+- 08U - %+- 08U\n", (unsigned int)4200000000));
-	printf("Test %%+ 08U - %+ 08U\n", (unsigned int)4200000000));
-	printf("Test %%- 8U - %- 08U\n", (unsigned int)4200000000));
-	printf("Test %%+ 8.2U - %+ 8.2U\n", (unsigned int)4200000000));
-	printf("Test %%- 8.2U - %- 8.2U\n", (unsigned int)4200000000));
-	printf("Test %%+-8.2U - %+-8.2U\n", (unsigned int)4200000000));
-	printf("Test %%-+ 8.2U - %-+ 8.2U\n", (unsigned int)4200000000));
-	printf("Test %%+08.2U - %+08.2U\n", (unsigned int)4200000000));
-	printf("Test %%-08.2U - %-08.2U\n", (unsigned int)4200000000));
-	printf("Test %%0 8.2U - %0 8.2U\n", (unsigned int)4200000000));
-	printf("Test %%+-08.2U - %+-08.2U\n", (unsigned int)4200000000));
-	printf("Test %%+- 08.2U - %+- 08.2U\n", (unsigned int)4200000000));
-	printf("Test %%+ 08.2U - %+ 08.2U\n", (unsigned int)4200000000));
-	printf("Test %%- 8.2U - %- 08.2U\n\n", (unsigned int)4200000000));
+	printf("Test %%-8U - %-8U\n", (unsigned int)4200000000);
+	printf("Test %%+8U - %+8U\n", (unsigned int)4200000000);
+	printf("Test %%08U - %08U\n", (unsigned int)4200000000);
+	printf("Test %% 8U - % 8U\n", (unsigned int)4200000000);
+	printf("Test %%#U - %#U\n", (unsigned int)4200000000);
+	printf("Test %%8U - %8U\n", (unsigned int)4200000000);
+	printf("Test %%8.2U - %8.2U\n\n", (unsigned int)4200000000);
+	printf("Test %%+ 8U - %+ 8U\n", (unsigned int)4200000000);
+	printf("Test %%- 8U - %- 8U\n", (unsigned int)4200000000);
+	printf("Test %%+-8U - %+-8U\n", (unsigned int)4200000000);
+	printf("Test %%-+ 8U - %-+ 8U\n", (unsigned int)4200000000);
+	printf("Test %%+08U - %+08U\n", (unsigned int)4200000000);
+	printf("Test %%-08U - %-08U\n", (unsigned int)4200000000);
+	printf("Test %%0 8U - %0 8U\n", (unsigned int)4200000000);
+	printf("Test %%+-08U - %+-08U\n", (unsigned int)4200000000);
+	printf("Test %%+- 08U - %+- 08U\n", (unsigned int)4200000000);
+	printf("Test %%+ 08U - %+ 08U\n", (unsigned int)4200000000);
+	printf("Test %%- 8U - %- 08U\n", (unsigned int)4200000000);
+	printf("Test %%+ 8.2U - %+ 8.2U\n", (unsigned int)4200000000);
+	printf("Test %%- 8.2U - %- 8.2U\n", (unsigned int)4200000000);
+	printf("Test %%+-8.2U - %+-8.2U\n", (unsigned int)4200000000);
+	printf("Test %%-+ 8.2U - %-+ 8.2U\n", (unsigned int)4200000000);
+	printf("Test %%+08.2U - %+08.2U\n", (unsigned int)4200000000);
+	printf("Test %%-08.2U - %-08.2U\n", (unsigned int)4200000000);
+	printf("Test %%0 8.2U - %0 8.2U\n", (unsigned int)4200000000);
+	printf("Test %%+-08.2U - %+-08.2U\n", (unsigned int)4200000000);
+	printf("Test %%+- 08.2U - %+- 08.2U\n", (unsigned int)4200000000);
+	printf("Test %%+ 08.2U - %+ 08.2U\n", (unsigned int)4200000000);
+	printf("Test %%- 8.2U - %- 08.2U\n\n", (unsigned int)4200000000);
 
 	printf("Test %%-8x - %-8x\n", 42);
 	printf("Test %%+8x - %+8x\n", 42);
