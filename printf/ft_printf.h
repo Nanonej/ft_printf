@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/10 17:20:16 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/11 13:40:39 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct	s_form
 	char		*buff;
 	char		*arg;
 	va_list		ap;
-	int			(*p[17])(struct s_form *form);
+	int			(*p[21])(struct s_form *form);
 	char		minus;
 	char		plus;
 	char		zero;
@@ -62,7 +62,7 @@ int				ft_conv_b(t_form *form);
 
 void			check_alloc(void *ptr);
 int				check_conv(char c);
-int				check_conv_mod(t_form *form);
+void			check_conv_mod(t_form *form);
 char			*free_swap(char *src, char *dst);
 
 #endif

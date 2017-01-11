@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/10 17:12:01 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/11 13:42:25 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,16 @@ static char		*buff_until(char *buff, char **format)
 
 static int		buff_conv(t_form *form, char **format)
 {
-	if (!(fill_opt(form, format)))
+	if (fill_opt(form, format))
 	{
-		init_clear(&form);
-		return (0);
+		if (!(form->p[ft_strfind("sSpdDioOuUxXcCbBeEfF%", form->conv)](form)))
+		{
+			init_clear(&form);
+			return (0);
+		}
+		form->buff = free_swap(form->buff, ft_strjoin(form->buff, form->arg));
+		check_alloc((void *)form->buff);
 	}
-	if (!(form->p[ft_strfind("sSpdDioOuUxXcCbB%", form->conv)](form)))
-	{
-		init_clear(&form);
-		return (0);
-	}
-	form->buff = free_swap(form->buff, ft_strjoin(form->buff, form->arg));
-	check_alloc((void *)form->buff);
 	if (form->arg)
 		free(form->arg);
 	if (form->mod)

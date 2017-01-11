@@ -6,38 +6,26 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 19:16:14 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/10 12:03:10 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 13:36:08 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		check_mod(t_form *form, char **format)
+static void		check_mod(t_form *form, char **format)
 {
 	int			i;
 	char		*tmp;
 
 	i = 0;
 	tmp = *format;
-	while (*tmp == 'j' || *tmp == 'z' || *tmp == 'h' || *tmp == 'l')
+	while (ft_strfind("lhjzL", *tmp) != -1)
 	{
 		i++;
 		tmp++;
 	}
-	if (i == 1 || i == 2)
-	{
-		tmp = ft_strsub(*format, 0, i);
-		check_alloc((void *)tmp);
-		form->mod = tmp;
-	}
+	check_alloc((void *)(form->mod = ft_strsub(*format, 0, i)));
 	*format += i;
-	if (i == 2 && (!ft_strequ(form->mod, "ll") && !ft_strequ(form->mod, "hh")))
-	{
-		free(form->mod);
-		form->mod = NULL;
-		i++;
-	}
-	return ((i <= 2) ? 1 : 0);
 }
 
 static void		check_prec(t_form *form, char **format)
@@ -109,11 +97,20 @@ int				fill_opt(t_form *form, char **format)
 	check_opt(form, format);
 	check_len(form, format);
 	check_prec(form, format);
-	if (!check_mod(form, format))
-		return (0);
+	check_mod(form, format);
 	form->conv = **format;
-	if (!check_conv(form->conv) || !check_conv_mod(form))
+	if (!check_conv(form->conv))
 		return (0);
+	if (form->mod)
+	{
+		if ((form->mod)[0] == 'L' && ft_strfind("eEfF", form->conv) == -1)
+		{
+			free(form->mod);
+			form->mod = NULL;
+		}
+	}
+	if (form->mod)
+		check_conv_mod(form);
 	(*format)++;
 	return (1);
 }
