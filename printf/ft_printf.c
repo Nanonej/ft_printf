@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/10 17:12:01 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/11 11:26:49 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		buff_conv(t_form *form, char **format)
 		init_clear(&form);
 		return (0);
 	}
-	if (!(form->p[ft_strfind("sSpdDioOuUxXcCbB%", form->conv)](form)))
+	if (!(form->p[ft_strfind("sSpdDioOuUxXcCbB%eEfF", form->conv)](form)))
 	{
 		init_clear(&form);
 		return (0);

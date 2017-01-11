@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2017/01/10 12:03:38 by lchim            ###   ########.fr        #
+#    Updated: 2017/01/11 11:20:42 by lchim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ OBJDIR	= objs
 SRCS 	=	libft/ft_atoi.c				\
 			libft/ft_bzero.c			\
 			libft/ft_digitcount.c		\
+			libft/ft_dtoa.c				\
 			libft/ft_int_tab_bubble.c	\
  			libft/ft_isalnum.c 			\
 			libft/ft_isalpha.c			\

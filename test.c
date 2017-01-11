@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 19:41:24 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 11:13:04 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,33 @@
 #include <fcntl.h>
 #include <locale.h>
 
-int		main(void)
+char		*dtoa(double c, char sign)
 {
-	// setlocale(LC_ALL, "en_US");
-	// ft_putnbr(ft_printf("%s", 'a'));
-	printf("%s\n", ft_itoa_base(6545, 10, 1));
+	int		i;
+	int		tmp;
+	char	*ent;
+	char	*ret;
+
+	i = (int)c;
+	c -= (double)i;
+	while (c != (double)(tmp = (int) c))
+		c *= 10;
+	ent = ft_strjoin(ft_itoa_base(i, 10, sign), ".");
+	if (ent == NULL)
+		return (NULL);
+	ret = ft_strjoin(ent, ft_itoa(c));
+	if (ret == NULL)
+		return (NULL);
+	free(ent);
+	return (ret);
+}
+
+int			main(void)
+{
+	double	c;
+
+	c = -1.99999999;
+	ft_putstr(dtoa(c > 0 ? c : -c, c > 0 ? 0 : 1));
 	return (0);
 }
 
