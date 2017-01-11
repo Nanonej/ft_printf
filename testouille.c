@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/10 17:22:48 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/11 13:36:45 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int				main(void)
 	char		b[0];
 
 	printf("\n");
-
 	ft_putnbr(ft_printf("Test 00 - %%%%\n"));
 	ft_putendl("");
 	ft_putnbr(printf("Test 00 - %%%%\n"));
