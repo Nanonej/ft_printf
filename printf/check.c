@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 11:22:31 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 12:35:56 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,30 @@ int				check_conv(char c)
 	return (1);
 }
 
-int				check_conv_mod(t_form *form)
+void			check_conv_mod(t_form *form)
 {
-	size_t		n;
-
-	if (form->mod)
+	if (form->conv == 'c')
 	{
-		n = ft_strlen(form->mod);
-		if (form->conv == 'c' && (n > 1 || (form->mod)[0] != 'l'))
-			return (0);
-		else if (form->conv == 's' && (n > 1 || (form->mod)[0] != 'l'))
-			return (0);
+		if (ft_strfind(form->mod, 'l') != -1 && !ft_strequ(form->mod, "ll"))
+		{
+			form->mod = free_swap(form->mod, ft_strdup("l"));
+			check_alloc((void *)form->mod);
+		}
+		else
+		{
+			free(form->mod);
+			form->mod = NULL;
+		}
 	}
-	if (ft_strfind("SDOUXCB%", form->conv) != -1 && form->mod)
-		return (0);
-	return (1);
+	else
+	{
+		if (ft_strlen(form->mod) >= 2 && !ft_strequ(form->mod, "ll") && \
+		!ft_strequ(form->mod, "hh"))
+		{
+			form->mod = free_swap(form->mod, ft_strdup("j"));
+			check_alloc((void *)form->mod);
+		}
+	}
 }
 
 char			*free_swap(char *src, char *dst)

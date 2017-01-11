@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 11:19:22 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/11 12:03:19 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char		*dtoa(double c, char sign)
 
 	i = (int)c;
 	c -= (double)i;
-	while (c != (double)(tmp = (int) c))
+	while (c != (double)(tmp = (int)c))
 		c *= 10;
 	ent = ft_strjoin(ft_itoa_base(i, 10, sign), ".");
 	if (ent == NULL)
