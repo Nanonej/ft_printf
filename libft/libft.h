@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 19:00:36 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 11:19:54 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 12:37:52 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ int				get_next_line(const int fd, char **line);
 void			ft_putwchar_fd(wchar_t c, int fd);
 void			ft_putwchar(wchar_t chr);
 char			*ft_itoa_base(uintmax_t n, int base, char sign);
-char			*dtoa(double c, char sign);
+char			*ft_dtoa(long double c, int prec, char sign);
 
 #endif

@@ -6,29 +6,60 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 12:03:19 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 15:32:20 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*dtoa(double c, char sign)
+static	char	*join_part(char *dec, int tenth, int prec, char sign)
 {
-	int		i;
-	int		tmp;
-	char	*ent;
-	char	*ret;
+	char		*stenth;
+	char		*tmp;
+	int			i;
+	int			j;
 
-	i = (int)c;
-	c -= (double)i;
-	while (c != (double)(tmp = (int)c))
-		c *= 10;
-	ent = ft_strjoin(ft_itoa_base(i, 10, sign), ".");
-	if (ent == NULL)
+	i = prec - 1;
+	if (!(stenth = ft_strnew(prec)))
 		return (NULL);
-	ret = ft_strjoin(ent, ft_itoa(c));
-	if (ret == NULL)
+	stenth = (char *)ft_memset(stenth, '0', prec);
+	if (!(tmp = ft_itoa_base(tenth, 10, 0)))
 		return (NULL);
-	free(ent);
+	j = (int)ft_strlen(tmp) - 1;
+	while (j > -1)
+		stenth[i--] = tmp[j--];
+	free(tmp);
+	if (!(tmp = ft_strjoin(dec, stenth)))
+		return (NULL);
+	free(stenth);
+	return (tmp);
+}
+
+char			*ft_dtoa(long double d, int prec, char sign)
+{
+	int			i;
+	int			dec;
+	int			tenth;
+	char		*ret;
+	char		*sdec;
+
+	i = prec;
+	dec = (int)d;
+	d -= (long double)dec;
+	while (i-- > 0)
+		d *= 10;
+	tenth = (int)d;
+	d -= ((long double)tenth + 0.4);
+	if (d > 0)
+		tenth++;
+	if (!(ret = ft_itoa_base(dec, 10, sign)))
+		return (NULL);
+	if (!(sdec = ft_strjoin(ret, ".")))
+		return (NULL);
+	free(ret);
+	ret = join_part(sdec, tenth, prec, sign);
+	if (!ret)
+		return (NULL);
+	free(sdec);
 	return (ret);
 }
