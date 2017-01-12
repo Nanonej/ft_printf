@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/12 18:07:59 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 23:23:11 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_form
 	char		*buff;
 	char		*arg;
 	va_list		ap;
-	int			(*p[18])(struct s_form *form);
+	int			(*p[19])(struct s_form *form);
 	char		minus;
 	char		plus;
 	char		zero;

@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/12 18:08:33 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 23:36:07 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void			check_conv_mod(t_form *form, char *mod)
 {
 	if (ft_strlen(mod) == 1)
 		form->mod = ft_strfind("ahlLjz", *mod);
-	else if (ft_strlen(mod) == 2 && ft_strequ("LL", mod))
+	else if (ft_strlen(mod) == 2 && ft_strequ("ll", mod))
 		form->mod = LL;
-	else if (ft_strlen(mod) == 2 && ft_strequ("HH", mod))
+	else if (ft_strlen(mod) == 2 && ft_strequ("hh", mod))
 		form->mod = HH;
 	else
 		form->mod = J;
-	if (form->mod == L && ft_strfind("fF", form->conv) == -1)
+	if (form->mod == UL && ft_strfind("fF", form->conv) != -1)
 		form->mod = 0;
 }
 

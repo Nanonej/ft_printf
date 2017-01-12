@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 18:56:19 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/09 20:08:32 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 23:06:43 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char			*ft_itoa_base(uintmax_t n, int base, char sign)
 	size_t	dc;
 	size_t	i;
 
+	if (n == 0)
+		return (ft_strdup("0"));
 	dc = 0;
 	i = 1;
 	ft_strcpy(tab, "0123456789abcdef");

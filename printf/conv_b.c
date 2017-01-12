@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 09:31:28 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 23:10:25 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 23:41:01 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int				ft_conv_x(t_form *form)
 			tmp++;
 		}
 	}
+	if (form->arg && ft_strlen(form->arg) == 1 && form->arg[0] == '0')
+		form->hash = 0;
 	return ((form->arg) ? 1 : 0);
 }
 
