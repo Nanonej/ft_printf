@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/11 22:35:01 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 00:36:57 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int				ft_conv_o(t_form *form);
 int				ft_conv_x(t_form *form);
 int				ft_conv_p(t_form *form);
 int				ft_conv_b(t_form *form);
+
+void			format_zero_prec(t_form *form);
 
 void			check_alloc(void *ptr);
 int				check_conv(char c);
