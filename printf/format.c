@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 00:00:27 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/12 01:01:06 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 01:18:55 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,16 @@ static void		format_len(t_form *form)
 		tmp = ft_strnew(form->len - i);
 		check_alloc((void *)tmp);
 		tmp = (char *)ft_memset(tmp, ' ', form->len - i);
-		form->arg = free_swap(form->arg, ft_strjoin(tmp, form->arg));
-		check_alloc((void *)form->arg);
+		if (!form->minus)
+		{
+			form->arg = free_swap(form->arg, ft_strjoin(tmp, form->arg));
+			check_alloc((void *)form->arg);
+		}
+		else
+		{
+			form->arg = free_swap(form->arg, ft_strjoin(form->arg, tmp));
+			check_alloc((void *)form->arg);
+		}
 		free(tmp);
 	}
 }
