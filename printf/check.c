@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/11 23:11:42 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 16:16:10 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void			check_alloc(void *ptr)
 {
 	if (!ptr)
+	{
+		ft_putendl("Memory Allocation Failed.");
 		exit(EXIT_FAILURE);
+	}
 }
 
 int				check_conv(char c)

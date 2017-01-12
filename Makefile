@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2017/01/12 00:00:41 by lchim            ###   ########.fr        #
+#    Updated: 2017/01/12 16:07:23 by lchim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRCS 	=	libft/ft_atoi.c				\
 			printf/conv_l.c				\
 			printf/conv_n.c				\
 			printf/conv_b.c				\
+			printf/conv_f.c				\
 			printf/format.c				\
 
 OBJT	= $(SRCS:.c=.o)
@@ -136,7 +137,7 @@ $(NAME): $(OBJT)
 
 %.o: %.c
 	@echo "--$(LOG_CLEAR)$(LOG_GREEN)$(NAME)$(LOG_NOCOLOR) ........................ $(LOG_VIOLET)$<$(LOG_NOCOLOR)$(LOG_UP)"
-	@$(CC) $(CFLAGS) $(ADDFLAGS) -c -o $@ $^ -I ./libft -I ./printf
+	@$(CC) $(CFLAGS) $(ADDFLAGS) -c -o $@ $^ -I ./libft -I ./printf -g
 
 clean:
 	@rm -f $(OBJT)

@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/12 13:55:04 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 16:39:26 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,7 @@
 
 int		main(void)
 {
-	char	*ptr;
-
-
-	ptr = ft_dtoa((long double)42.0002999, 6, 0);
-	printf("%s\n", ptr);
-	while (1);
-	// printf("%s\n", ptr);
+	printf("%.0f\n", 42.4256);
 	// char *ptr;
 	//
 	// setlocale(LC_ALL, "en_US");
