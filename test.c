@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/12 16:39:26 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 18:29:20 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 int		main(void)
 {
-	printf("%.0f\n", 42.4256);
+	ft_printf("%.5f\n", 0.15);
 	// char *ptr;
 	//
 	// setlocale(LC_ALL, "en_US");

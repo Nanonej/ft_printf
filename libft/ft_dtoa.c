@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/12 15:32:20 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 18:32:49 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	char	*join_part(char *dec, int tenth, int prec, char sign)
 	int			i;
 	int			j;
 
-	i = prec - 1;
+	i = prec - i;
 	if (!(stenth = ft_strnew(prec)))
 		return (NULL);
 	stenth = (char *)ft_memset(stenth, '0', prec);
