@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/12 22:55:05 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/13 18:34:30 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,54 +41,40 @@ static void		ft_wchar_to_str(wchar_t c, char **s)
 	}
 }
 
-int				ft_conv_c(t_form *form)
+int				ft_conv_c(t_form *f)
 {
-	char		c;
-	wchar_t		lc;
+	wchar_t			c;
 
-	if (form->conv == 'c' && !form->mod)
-	{
-		c = (char)va_arg(form->ap, int);
-		form->arg = ft_strnew(1);
-		check_alloc((void *)form->arg);
-		(form->arg)[0] = c;
-	}
+	if (f->conv == 'c' && f->mod != L)
+		c = (unsigned char)va_arg(f->ap, int);
 	else
-	{
-		lc = (wchar_t)va_arg(form->ap, wint_t);
-		ft_wchar_to_str(lc, &(form->arg));
-	}
-	return ((form->arg) ? 1 : 0);
+		c = (wchar_t)va_arg(f->ap, wint_t);
+	ft_wchar_to_str(c, &(f->arg));
+	if (c == 0)
+		return (1);
+	return (ft_strlen(f->arg));
 }
 
-int		ft_conv_pct(t_form *form)
+int				ft_conv_s(t_form *f)
 {
-	form->arg = ft_strdup("%");
-	check_alloc((void *)form->arg);
-	return ((form->arg) ? 1 : 0);
+	wchar_t		*s;
+
+	if (f->conv == 's' && f->mod != L)
+		s = va_arg(f->ap, char *);
+	else
+		s = va_arg(f->ap, wchar_t *);
+	if (!s)
+	{
+		check_alloc((f->arg = ft_strdup("(null)")));
+		return (ft_strlen(f->arg));
+	}
+	check_alloc((f->arg = ft_strdup(s)));
+	return (ft_strlen(f->arg));
 }
 
-// int				ft_conv_s(t_form *form)
-// {
-// 	wchar_t		*wstr;
-// 	char		*s;
-//
-// 	if (form->conv == 's' && !form->mod)
-// 	{
-// 		form->arg = va_arg(form->ap, char *);
-// 	}
-// 	else if ((form->conv == 's'  && (form->mod)[0] == 'l') || form->conv == 'S')
-// 	{
-// 		form->arg = ft_strnew(0);
-// 		wstr = va_arg(form->ap, wchar_t *);
-// 		while (*wstr)
-// 		{
-// 			check_alloc((void *)form->arg);
-// 			ft_wchar_to_str(*wstr, &s);
-// 			form->arg = free_swap(form->arg, ft_strjoin(form->arg, s));
-// 	        wstr++;
-// 	        free(s);
-// 		}
-// 	}
-// 	return ((form->arg) ? 1 : 0);
-// }
+int				ft_conv_pct(t_form *f)
+{
+	f->arg = ft_strdup("%");
+	check_alloc(f->arg);
+	return (1);
+}

@@ -6,98 +6,94 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 00:00:27 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/12 23:56:18 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/13 23:26:33 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-
-static void		format_len(t_form *form)
+static void		format_len(t_form *f)
 {
-	int			i;
 	char		*tmp;
 
-	i = (int)ft_strlen(form->arg);
-	if (i < form->len)
+	if (f->szarg < f->len)
 	{
-		tmp = ft_strnew(form->len - i);
-		check_alloc((void *)tmp);
-		tmp = (char *)ft_memset(tmp, ' ', form->len - i);
-		if (!form->minus)
+		check_alloc((tmp = ft_strnew(f->len - f->szarg)));
+		tmp = (char *)ft_memset(tmp, ' ', f->len - f->szarg);
+		if (!f->minus)
 		{
-			form->arg = free_swap(form->arg, ft_strjoin(tmp, form->arg));
-			check_alloc((void *)form->arg);
+			free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
+			check_alloc(f->arg);
 		}
 		else
 		{
-			form->arg = free_swap(form->arg, ft_strjoin(form->arg, tmp));
-			check_alloc((void *)form->arg);
+			free_swap(&(f->arg), ft_strjoin(f->arg, tmp));
+			check_alloc(f->arg);
 		}
+		f->szarg += ft_strlen(tmp);
 		free(tmp);
 	}
 }
 
-static void		format_hash(t_form *form)
+static void		format_hash(t_form *f)
 {
-	if ((ft_strfind("oOxX", form->conv) != -1 && form->hash) || \
-	form->conv == 'p')
-	{
-		if ((form->conv == 'o' || form->conv == 'O') && form->arg[0] != '0')
-		{
-			form->arg = free_swap(form->arg, ft_strjoin("0", form->arg));
-			check_alloc((void *)form->arg);
-		}
-		else
-		{
-			form->arg = free_swap(form->arg, ft_strjoin("0x", form->arg));
-			check_alloc((void *)form->arg);
-			if (form->conv == 'X')
-				form->arg[1] = 'X';
-		}
-	}
-	format_len(form);
-}
-
-static void		format_plus_space(t_form *form)
-{
-	if (ft_strfind("dDi", form->conv) != -1)
-	{
-		if (form->plus)
-		{
-			form->arg = free_swap(form->arg, ft_strjoin("+", form->arg));
-			check_alloc((void *)form->arg);
-		}
-		else if (form->space)
-		{
-			form->arg = free_swap(form->arg, ft_strjoin(" ", form->arg));
-			check_alloc((void *)form->arg);
-		}
-	}
-	format_hash(form);
-}
-
-void			format_zero_prec(t_form *form)
-{
-	int			i;
 	char		*tmp;
 
-	i = (int)ft_strlen(form->arg);
-	if (ft_strfind("cC", form->conv) != -1)
-		form->prec = -1;
-	if (form->prec == -1 && form->zero && !(form->minus))
-		form->prec = form->len;
-	if (form->hash)
-		form->prec -= 2;
-	if (i < form->prec)
+	if (ft_strfind("oOxX", f->conv) != -1 && f->hash)
 	{
-		tmp = ft_strnew(form->prec - i);
-		check_alloc((void *)tmp);
-		tmp = (char *)ft_memset(tmp, '0', form->prec - i);
-		form->arg = free_swap(form->arg, ft_strjoin(tmp, form->arg));
-		check_alloc((void *)form->arg);
+		check_alloc((tmp = ft_strnew(f->hash)));
+		if (f->conv == 'o' || f->conv == 'O')
+			tmp[0] = '0';
+		if (f->conv == 'x' || f->conv == 'X')
+			tmp = ft_strcpy(tmp, "0x");
+		free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
+		free(tmp);
+		f->szarg += f->hash;
+	}
+	if (f->conv == 'X')
+	{
+		tmp = f->arg;
+		while (*tmp)
+		{
+			*tmp = ft_toupper(*tmp);
+			tmp++;
+		}
+	}
+	if (ft_strfind("cC", f->conv) == -1)
+		format_len(f);
+}
+
+static void		format_sign_d(t_form *f)
+{
+	char		*tmp;
+
+	if (ft_strfind("dDi", f->conv) != -1 && (f->plus || f->space || f->sign))
+	{
+		check_alloc((tmp = ft_strdup(" ")));
+		if (f->plus)
+			tmp[0] = '+';
+		if (f->sign)
+			tmp[0] = '-';
+		free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
+		free(tmp);
+		f->szarg++;
+	}
+	format_hash(f);
+}
+
+void			format_prec(t_form *f)
+{
+	char		*tmp;
+
+	if (f->prec > f->szarg && ft_strfind("dDiuUoOxXbB", f->conv) != -1)
+	{
+		f->prec -= f->szarg;
+		check_alloc((tmp = ft_strnew(f->prec)));
+		tmp = (char *)ft_memset(tmp, '0', f->prec);
+		free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
+		check_alloc(f->arg);
+		f->szarg += f->prec;
 		free(tmp);
 	}
-	format_plus_space(form);
+	format_sign_d(f);
 }

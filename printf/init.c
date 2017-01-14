@@ -6,16 +6,44 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/12 18:07:36 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/14 11:37:25 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void			init_opt(t_form *f)
+{
+	f->arg = NULL;
+	f->szarg = 0;
+	f->minus = 0;
+	f->sign = 0;
+	f->plus = 0;
+	f->zero = 0;
+	f->space = 0;
+	f->hash = 0;
+	f->len = -1;
+	f->prec = -1;
+	f->mod = 0;
+	f->conv = '\0';
+}
+
+void			init_clear(t_form **f)
+{
+	va_end((*f)->ap);
+	if ((*f)->buff)
+		free((*f)->buff);
+	if ((*f)->arg)
+		free((*f)->arg);
+	init_opt(*f);
+	free(*f);
+	*f = NULL;
+}
+
 static void		init_array(t_array *p)
 {
-	// p[0] = ft_conv_s;
-	// p[1] = ft_conv_s;
+	p[0] = ft_conv_s;
+	p[1] = ft_conv_s;
 	p[2] = ft_conv_x;
 	p[3] = ft_conv_d;
 	p[4] = ft_conv_d;
@@ -35,39 +63,14 @@ static void		init_array(t_array *p)
 	p[18] = ft_conv_pct;
 }
 
-t_form			*init_form(t_form *form)
+t_form			*init_form(t_form *f)
 {
-	form = (t_form *)malloc(sizeof(t_form));
-	check_alloc((void *)form);
-	form->buff = ft_strnew(0);
-	check_alloc((void *)form->buff);
-	init_array(form->p);
-	init_opt(form);
-	return (form);
-}
-
-void			init_opt(t_form *form)
-{
-	form->arg = NULL;
-	form->minus = 0;
-	form->plus = 0;
-	form->zero = 0;
-	form->space = 0;
-	form->hash = 0;
-	form->len = -1;
-	form->prec = -1;
-	form->mod = 0;
-	form->conv = '\0';
-}
-
-void			init_clear(t_form **form)
-{
-	va_end((*form)->ap);
-	if ((*form)->buff)
-		free((*form)->buff);
-	if ((*form)->arg)
-		free((*form)->arg);
-	init_opt(*form);
-	free(*form);
-	*form = NULL;
+	f = (t_form *)malloc(sizeof(t_form));
+	check_alloc(f);
+	f->buff = ft_strnew(0);
+	f->szbuff = 0;
+	check_alloc(f->buff);
+	init_array(f->p);
+	init_opt(f);
+	return (f);
 }

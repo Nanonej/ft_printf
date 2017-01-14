@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2017/01/12 16:07:23 by lchim            ###   ########.fr        #
+#    Updated: 2017/01/13 22:41:50 by lchim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRCS 	=	libft/ft_atoi.c				\
 			libft/ft_lstmap.c			\
 			libft/ft_lstnew.c			\
 			libft/ft_memalloc.c			\
+			libft/ft_memcat.c			\
 			libft/ft_memccpy.c			\
 			libft/ft_memchr.c			\
 			libft/ft_memcmp.c			\
@@ -100,7 +101,6 @@ SRCS 	=	libft/ft_atoi.c				\
 			printf/conv_l.c				\
 			printf/conv_n.c				\
 			printf/conv_b.c				\
-			printf/conv_f.c				\
 			printf/format.c				\
 
 OBJT	= $(SRCS:.c=.o)
