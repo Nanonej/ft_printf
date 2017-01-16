@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 17:31:24 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/14 11:42:49 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/15 18:15:31 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,9 @@ int				ft_conv_u(t_form *f)
 	return (ft_strlen(f->arg));
 }
 
-int				ft_conv_f(t_form *f)
-{
-	long double d;
-
-	if (f->mod == UL)
-		d = va_arg(f->ap, long double);
-	else
-		d = va_arg(f->ap, double);
-	if (f->prec == -1)
-		f->prec = 6;
-	printf("%d\n", f->prec);
-	f->arg = ft_dtoa(d < 0 ? -d : d, f->prec, d < 0 ? 1 : 0);
-	check_alloc(f->arg);
-	if (f->prec == 0 && f->mod != UL)
-		f->arg[ft_strlen(f->arg) - 1] = '\0';
-	return (ft_strlen(f->arg));
-}
-
 intmax_t		ft_conv_intmax(t_form *f)
 {
-	if (!f->mod && f->conv == 'd')
+	if (!f->mod && (f->conv == 'd' || f->conv == 'i'))
 		return (va_arg(f->ap, int));
 	else if (!f->mod && f->conv == 'D')
 		return (va_arg(f->ap, long int));

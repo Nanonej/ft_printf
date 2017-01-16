@@ -6,52 +6,60 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/14 11:49:41 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/12 18:32:49 by lchim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char			*part_ent(long double d, char sign)
+static	char	*join_part(char *dec, int tenth, int prec, char sign)
 {
-	char			*tmp;
-	char			*ret;
-	long long		i;
+	char		*stenth;
+	char		*tmp;
+	int			i;
+	int			j;
 
-	i = (long long int)d;
-	tmp = ft_itoa_base(d, 10, sign);
-	if (!tmp)
-		return (tmp);
-	ret = ft_strjoin(tmp, ".");
-	if (!ret)
-		return (ret);
+	i = prec - i;
+	if (!(stenth = ft_strnew(prec)))
+		return (NULL);
+	stenth = (char *)ft_memset(stenth, '0', prec);
+	if (!(tmp = ft_itoa_base(tenth, 10, 0)))
+		return (NULL);
+	j = (int)ft_strlen(tmp) - 1;
+	while (j > -1)
+		stenth[i--] = tmp[j--];
 	free(tmp);
-	return (ret);
+	if (!(tmp = ft_strjoin(dec, stenth)))
+		return (NULL);
+	free(stenth);
+	return (tmp);
 }
 
-char				*ft_dtoa(long double d, int prec, char sign)
+char			*ft_dtoa(long double d, int prec, char sign)
 {
-	char			*tenth;
-	char			*tmp;
-	char			*ret;
-	long long int	i;
+	int			i;
+	int			dec;
+	int			tenth;
+	char		*ret;
+	char		*sdec;
 
-	if (!(ret = part_ent(d, sign)))
-		return (ret);
-	i = (long long int)d;
-	d -= (long double)i;
-	while (prec-- > 0)
+	i = prec;
+	dec = (int)d;
+	d -= (long double)dec;
+	while (i-- > 0)
 		d *= 10;
-	i = (long long int)d;
-	d -= (long double)i;
-	if (d >= 0.5 && d < 1)
-		i++;
-	if (!(tenth = ft_itoa_base(i, 10, 0)))
-		return (tenth);
-	tmp = ret;
-	if (!(ret = ft_strjoin(dec, tenth)))
+	tenth = (int)d;
+	d -= ((long double)tenth + 0.4);
+	if (d > 0)
+		tenth++;
+	if (!(ret = ft_itoa_base(dec, 10, sign)))
 		return (NULL);
-	free(tmp);
-	free(tenth);
+	if (!(sdec = ft_strjoin(ret, ".")))
+		return (NULL);
+	free(ret);
+	ret = join_part(sdec, tenth, prec, sign);
+	if (!ret)
+		return (NULL);
+	free(sdec);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/13 00:14:24 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/15 18:05:06 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 // int		main(void)
 // {
-// 	// setlocale(LC_ALL, "en_US");
+	// setlocale(LC_ALL, "en_US");
 // 	// ft_putnbr(ft_printf("%s", 'a'));
 // 	printf("%s\n", ft_itoa_base(6545, 10, 1));
 // 	return (0);
@@ -34,8 +34,9 @@
 
 int		main(void)
 {
-	ft_printf("%hU\n", 4294967296);
-	printf("%hU\n", (unsigned long)4294967296);
+	setlocale(LC_ALL, "en_US");
+	ft_printf("%i\n", -42);
+	printf("%i\n", -42);
 	// char *ptr;
 	//
 	// setlocale(LC_ALL, "en_US");
