@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/13 18:34:30 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/16 12:56:00 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,41 @@ int				ft_conv_c(t_form *f)
 	return (ft_strlen(f->arg));
 }
 
-int				ft_conv_s(t_form *f)
+static int		ft_conv_ws(t_form *f)
 {
 	wchar_t		*s;
+	char		*tmp;
+	int			i;
+
+	s = va_arg(f->ap, wchar_t *);
+	if (!s)
+	{
+		check_alloc((f->arg = ft_strdup("(null)")));
+		return (ft_strlen(f->arg));
+	}
+	check_alloc((f->arg = ft_strnew(0)));
+	i = check_wchar(*s);
+	while (*s)
+	{
+		ft_wchar_to_str(*s, &tmp);
+		free_swap(&(f->arg), ft_memcat(f->arg, tmp, f->szarg, i));
+		f->szarg += check_wchar(*s);
+		free(tmp);
+		s++;
+	}
+	return (f->szarg);
+}
+
+int				ft_conv_s(t_form *f)
+{
+	char		*s;
 
 	if (f->conv == 's' && f->mod != L)
 		s = va_arg(f->ap, char *);
 	else
-		s = va_arg(f->ap, wchar_t *);
+	{
+		return (ft_conv_ws(f));
+	}
 	if (!s)
 	{
 		check_alloc((f->arg = ft_strdup("(null)")));

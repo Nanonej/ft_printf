@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/13 15:32:39 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/16 12:58:31 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ void			check_conv_mod(t_form *form, char *mod)
 		form->mod = HH;
 	else
 		form->mod = J;
+}
+
+int				check_wchar(wchar_t c)
+{
+	if (c <= 0x10FFFF)
+	{
+	    if (c <= 0x7F)
+	        return (1);
+	    else if (c < 0x7FF)
+	        return (2);
+	    else if (c < 0xFFFF)
+	        return (3);
+	    else
+	        return (3);
+	}
+	return (-1);
 }
 
 void			free_swap(char **src, char *dst)
