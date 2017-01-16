@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   testouille.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/04 15:53:50 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/12 01:02:21 by lchim            ###   ########.fr       */
+/*   Created: 2017/01/04 15:53:50 by aridolfi          #+#    #+#             */
+/*   Updated: 2017/01/16 11:29:10 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 #include <fcntl.h>
