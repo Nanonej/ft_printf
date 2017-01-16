@@ -6,9 +6,11 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:29:18 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/13 19:59:07 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/16 14:14:40 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 #include "ft_printf.h"
 
@@ -18,9 +20,7 @@ void			init_opt(t_form *f)
 	f->szarg = 0;
 	f->minus = 0;
 	f->sign = 0;
-	f->plus = 0;
 	f->zero = 0;
-	f->space = 0;
 	f->hash = 0;
 	f->len = -1;
 	f->prec = -1;
@@ -31,8 +31,6 @@ void			init_opt(t_form *f)
 void			init_clear(t_form **f)
 {
 	va_end((*f)->ap);
-	if ((*f)->buff)
-		free((*f)->buff);
 	if ((*f)->arg)
 		free((*f)->arg);
 	init_opt(*f);
@@ -67,9 +65,7 @@ t_form			*init_form(t_form *f)
 {
 	f = (t_form *)malloc(sizeof(t_form));
 	check_alloc(f);
-	f->buff = ft_strnew(0);
 	f->szbuff = 0;
-	check_alloc(f->buff);
 	init_array(f->p);
 	init_opt(f);
 	return (f);

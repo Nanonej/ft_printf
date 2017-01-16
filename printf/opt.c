@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 19:16:14 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/13 20:50:38 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/16 14:14:56 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ static void		opt_opt(t_form *f, char **format)
 		if (**format == '-')
 			f->minus = 1;
 		else if (**format == '+')
-			f->plus = 1;
+			f->sign = 2;
 		else if (**format == '0')
 			f->zero = 1;
-		else if (**format == ' ')
-			f->space = 1;
+		else if (**format == ' ' && !f->sign)
+			f->sign = 3;
 		else if (**format == '#')
 			f->hash = 1;
 		(*format)++;

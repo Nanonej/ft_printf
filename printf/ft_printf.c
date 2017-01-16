@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/13 21:30:23 by lchim            ###   ########.fr       */
+/*   Updated: 2017/01/16 14:14:10 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static int		buff_conv(t_form *f, char **format)
 			return (0);
 		}
 		format_prec(f);
-		free_swap(&(f->buff), ft_memcat(f->buff, f->arg, f->szbuff, f->szarg));
-		check_alloc((void *)f->buff);
+		ft_memcpy(f->buff + f->szbuff, f->arg, f->szarg);
 		f->szbuff += f->szarg;
 	}
 	if (f->arg)
@@ -37,15 +36,14 @@ static void		buff_until(t_form *f, char **format)
 	char		*sub;
 	int			pos;
 
-	pos = ft_strfind(*format, '%');
-	if (pos == 0)
+	if (**format == '%')
 		return ;
+	pos = ft_strfind(*format, '%');
 	if (pos == -1)
 		pos = ft_strlen(*format);
 	sub = ft_strsub(*format, 0, pos);
-	check_alloc((void *)sub);
-	free_swap(&(f->buff), ft_memcat(f->buff, sub, f->szbuff, pos));
-	check_alloc((void *)f->buff);
+	check_alloc(sub);
+	ft_memcpy(f->buff + f->szbuff, sub, pos);
 	f->szbuff += pos;
 	*format += pos;
 	free(sub);

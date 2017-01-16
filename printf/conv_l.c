@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/16 12:56:00 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:12:58 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,6 @@ static void		ft_wchar_to_str(wchar_t c, char **s)
 	}
 }
 
-int				ft_conv_c(t_form *f)
-{
-	wchar_t			c;
-
-	if (f->conv == 'c' && f->mod != L)
-		c = (unsigned char)va_arg(f->ap, int);
-	else
-		c = (wchar_t)va_arg(f->ap, wint_t);
-	ft_wchar_to_str(c, &(f->arg));
-	if (c == 0)
-		return (1);
-	return (ft_strlen(f->arg));
-}
-
 static int		ft_conv_ws(t_form *f)
 {
 	wchar_t		*s;
@@ -78,6 +64,20 @@ static int		ft_conv_ws(t_form *f)
 		s++;
 	}
 	return (f->szarg);
+}
+
+int				ft_conv_c(t_form *f)
+{
+	wchar_t			c;
+
+	if (f->conv == 'c' && f->mod != L)
+		c = (unsigned char)va_arg(f->ap, int);
+	else
+		c = (wchar_t)va_arg(f->ap, wint_t);
+	ft_wchar_to_str(c, &(f->arg));
+	if (c == 0)
+		return (1);
+	return (check_wchar(c));
 }
 
 int				ft_conv_s(t_form *f)

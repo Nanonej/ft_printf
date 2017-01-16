@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 10:38:24 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/16 13:58:18 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:14:20 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include <wchar.h>
 # include <stdio.h> ////////////////////////////////////////////////////////////
 
@@ -31,9 +29,10 @@ typedef enum	e_mod
 	LL,
 }				t_mod;
 
+
 typedef struct	s_form
 {
-	char		*buff;
+	char		buff[4096];
 	char		*arg;
 	int			szbuff;
 	int			szarg;
@@ -41,9 +40,7 @@ typedef struct	s_form
 	int			(*p[19])(struct s_form *form);
 	char		minus;
 	char		sign;
-	char		plus;
 	char		zero;
-	char		space;
 	char		hash;
 	int			len;
 	int			prec;
@@ -73,8 +70,8 @@ int				ft_conv_b(t_form *f);
 void			check_alloc(void *ptr);
 int				check_conv(char c);
 void			check_conv_mod(t_form *form, char *mod);
+int				check_wchar(wchar_t c);
 void			check_before_format(t_form *f);
-void			free_swap(char **src, char *dst);
 
 void			format_prec(t_form *form);
 

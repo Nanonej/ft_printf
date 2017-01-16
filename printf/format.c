@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 00:00:27 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/16 13:57:00 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:13:33 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,24 @@
 static void		format_len(t_form *f)
 {
 	char		*tmp;
+	int			i;
 
 	if (f->szarg < f->len)
 	{
-		check_alloc((tmp = ft_strnew(f->len - f->szarg)));
-		tmp = (char *)ft_memset(tmp, ' ', f->len - f->szarg);
+		i = f->len - f->szarg;
+		check_alloc((tmp = ft_strnew(i)));
+		tmp = (char *)ft_memset(tmp, ' ', i);
 		if (!f->minus)
 		{
-			free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
+			free_swap(&(f->arg), ft_memcat(tmp, f->arg, i, f->szarg));
 			check_alloc(f->arg);
 		}
 		else
 		{
-			free_swap(&(f->arg), ft_strjoin(f->arg, tmp));
+			free_swap(&(f->arg), ft_memcat(f->arg, tmp, f->szarg, i));
 			check_alloc(f->arg);
 		}
-		f->szarg += ft_strlen(tmp);
+		f->szarg += i;
 		free(tmp);
 	}
 }
@@ -39,45 +41,39 @@ static void		format_hash(t_form *f)
 {
 	char		*tmp;
 
-	if (f->conv == 'p')
-		f->hash = 2;
-	if (ft_strfind("oOxXp", f->conv) != -1 && f->hash)
+	if (ft_strfind("oOxX", f->conv) != -1 && f->hash)
 	{
 		check_alloc((tmp = ft_strnew(f->hash)));
 		if (f->conv == 'o' || f->conv == 'O')
 			tmp[0] = '0';
-		if (f->conv == 'x' || f->conv == 'X' || f->conv == 'p')
-			tmp = ft_strcpy(tmp, "0x");
+		else if (f->conv == 'x' || f->conv == 'X')
+			ft_strcpy(tmp, "0x");
 		free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
 		free(tmp);
 		f->szarg += f->hash;
 	}
 	if (f->conv == 'X')
-	{
-		tmp = f->arg;
-		while (*tmp)
-		{
-			*tmp = ft_toupper(*tmp);
-			tmp++;
-		}
-	}
+		ft_strupper(f->arg);
 	format_len(f);
 }
+
 
 static void		format_sign_d(t_form *f)
 {
 	char		*tmp;
 
-	if (ft_strfind("dDi", f->conv) != -1 && (f->plus || f->space || f->sign))
+	if (ft_strfind("dDi", f->conv) != -1 && f->sign)
 	{
-		check_alloc((tmp = ft_strdup(" ")));
-		if (f->plus)
-			tmp[0] = '+';
-		if (f->sign)
+		check_alloc((tmp = ft_strnew(1)));
+		if (f->sign == 1)
 			tmp[0] = '-';
+		else if (f->sign == 2)
+			tmp[0] = '+';
+		else
+			tmp[0] = ' ';
 		free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
 		free(tmp);
-		f->szarg++;
+		f->szarg += 1;
 	}
 	format_hash(f);
 }

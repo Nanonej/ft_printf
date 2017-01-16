@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 17:31:24 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/15 18:15:31 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:13:16 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,10 @@ int				ft_conv_d(t_form *f)
 		check_alloc((f->arg = ft_strnew(0)));
 	else
 	{
-		f->sign = (nb >= 0 ? 0 : 1);
+		f->sign = (nb >= 0 ? f->sign : 1);
 		nb = (nb >= 0 ? nb : -nb);
 		check_alloc((f->arg = ft_itoa_base(nb, 10, 0)));
 	}
-	if (f->sign)
-	{
-		f->plus = 0;
-		f->space = 0;
-	}
-	if (f->plus)
-		f->space = 0;
-	if (f->prec == -1 && f->zero == 1 && !f->minus)
-		f->prec = f->len - f->plus - f->sign - f->space;
 	return (ft_strlen(f->arg));
 }
 
@@ -53,6 +44,7 @@ int				ft_conv_u(t_form *f)
 
 intmax_t		ft_conv_intmax(t_form *f)
 {
+	f->hash = 0;
 	if (!f->mod && (f->conv == 'd' || f->conv == 'i'))
 		return (va_arg(f->ap, int));
 	else if (!f->mod && f->conv == 'D')
@@ -72,6 +64,7 @@ intmax_t		ft_conv_intmax(t_form *f)
 
 uintmax_t		ft_conv_uintmax(t_form *f)
 {
+	f->sign = 0;
 	if (!f->mod && ft_strfind("OU", f->conv) != -1)
 		return (va_arg(f->ap, unsigned long int));
 	else if (!f->mod && ft_strfind("ouxXb", f->conv) != -1)
