@@ -6,7 +6,7 @@
 #    By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 13:32:46 by aridolfi          #+#    #+#              #
-#    Updated: 2017/01/16 11:28:30 by aridolfi         ###   ########.fr        #
+#    Updated: 2017/01/16 14:01:00 by aridolfi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRCS 	=	libft/ft_atoi.c				\
 			libft/ft_strtrim.c			\
 			libft/ft_tolower.c			\
 			libft/ft_toupper.c			\
+			libft/free_swap.c			\
 			libft/get_next_line.c		\
 			\
 			printf/ft_printf.c			\

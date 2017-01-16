@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 00:00:27 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/14 15:13:53 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/16 13:57:00 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,27 +82,36 @@ static void		format_sign_d(t_form *f)
 	format_hash(f);
 }
 
+static void		format_prec_str(t_form *f)
+{
+	char		*tmp;
+
+	if (f->prec != -1 && f->szarg > f->prec)
+	{
+		check_alloc((tmp = ft_strnew(f->prec)));
+		ft_memcpy(tmp, f->arg, f->prec);
+		free(f->arg);
+		f->arg = tmp;
+		f->szarg = f->prec;
+	}
+}
+
 void			format_prec(t_form *f)
 {
 	char		*tmp;
 
-	if (f->prec > f->szarg && ft_strfind("dDiuUoOxXbB", f->conv) != -1)
+	if (f->conv == 's' || f->conv == 'S')
+		format_prec_str(f);
+	check_before_format(f);
+	if (f->prec > f->szarg)
 	{
 		f->prec -= f->szarg;
 		check_alloc((tmp = ft_strnew(f->prec)));
 		tmp = (char *)ft_memset(tmp, '0', f->prec);
-		free_swap(&(f->arg), ft_strjoin(tmp, f->arg));
+		free_swap(&(f->arg), ft_memcat(tmp, f->arg, f->prec, f->szarg));
 		check_alloc(f->arg);
 		f->szarg += f->prec;
 		free(tmp);
-	}
-	else if (f->prec < f->szarg && f->prec >= 0 && ft_strfind("sS", f->conv) != -1)
-	{
-		check_alloc((tmp = ft_strnew(f->prec)));
-		tmp = (char *)ft_memcpy(tmp, f->arg, f->prec);
-		free_swap(&(f->arg), tmp);
-		check_alloc(f->arg);
-		f->szarg = f->prec;
 	}
 	format_sign_d(f);
 }

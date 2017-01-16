@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 19:00:36 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/16 11:28:08 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:00:27 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ void			ft_putwchar(wchar_t chr);
 char			*ft_itoa_base(uintmax_t n, int base, char sign);
 char			*ft_dtoa(long double c, int prec, char sign);
 void			*ft_memcat(void *s1, void *s2, size_t len1, size_t len2);
+void			free_swap(char **src, char *dst);
 
 #endif

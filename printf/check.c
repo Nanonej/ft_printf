@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/16 12:58:31 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/16 14:01:08 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,23 @@ int				check_wchar(wchar_t c)
 	return (-1);
 }
 
-void			free_swap(char **src, char *dst)
+void			check_before_format(t_form *f)
 {
-	free(*src);
-	*src = dst;
+	int			i;
+
+	i = 0;
+	if (ft_strfind("dDi", f->conv) != -1 && f->sign)
+		i = 1;
+	if (ft_strfind("cCsS%", f->conv) != -1)
+	{
+		f->prec = -1;
+		f->hash = 0;
+		f->sign = 0;
+	}
+	else if ((f->conv == 'x' || f->conv == 'X') && !ft_strlen(f->arg))
+		f->hash = 0;
+	else if ((f->conv == 'x' || f->conv == 'X') && ft_strlen(f->arg) && f->hash)
+		f->hash = 2;
+	if (!f->minus && f->prec == -1 && f->zero)
+		f->prec = f->len - f->hash - i;
 }
