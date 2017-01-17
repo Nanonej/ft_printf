@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 19:16:14 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/16 14:14:56 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/17 15:11:12 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,10 @@ int				fill_opt(t_form *f, char **format)
 		else if (**format == '.')
 			opt_prec(f, format);
 		else
+		{
 			if (opt_mod(f, format))
 				return (1);
+		}
 	}
 	if (!f->conv && check_conv((f->conv = **format)))
 	{

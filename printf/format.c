@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 00:00:27 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/16 14:13:33 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/17 15:12:37 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void		format_hash(t_form *f)
 		ft_strupper(f->arg);
 	format_len(f);
 }
-
 
 static void		format_sign_d(t_form *f)
 {

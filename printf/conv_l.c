@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 15:58:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/16 14:12:58 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/17 15:05:19 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@ static void		ft_wchar_to_str(wchar_t c, char **s)
 	if (c <= 0x10FFFF)
 	{
 		*s = ft_strnew(4);
-    	check_alloc((void*)s);
-	    if (c <= 0x7F)
-	        (*s)[0] = c;
-	    else if (c < 0x7FF)
-	    {
-	        (*s)[0] = (c >> 6) + 0xC0;
-	        (*s)[1] = (c & 0x3F) + 0x80;
-	    }
-	    else if (c < 0xFFFF)
-	    {
-	        (*s)[0] = (c >> 12) + 0xE0;
-	        (*s)[1] = ((c >> 6) & 0x3F) + 0x80;
-	        (*s)[2] = (c & 0x3F) + 0x80;
-	    }
-	    else
-	    {
-	        (*s)[0] = (c >> 18) + 0xF0;
-	        (*s)[1] = (c >> 12) & 0x3F;
-	        (*s)[2] = ((c >> 6) & 0x3F) + 0x80;
-	        (*s)[3] = (c & 0x3F) + 0x80;
-	    }
+		check_alloc((void*)s);
+		if (c <= 0x7F)
+			(*s)[0] = c;
+		else if (c < 0x7FF)
+		{
+			(*s)[0] = (c >> 6) + 0xC0;
+			(*s)[1] = (c & 0x3F) + 0x80;
+		}
+		else if (c < 0xFFFF)
+		{
+			(*s)[0] = (c >> 12) + 0xE0;
+			(*s)[1] = ((c >> 6) & 0x3F) + 0x80;
+			(*s)[2] = (c & 0x3F) + 0x80;
+		}
+		else
+		{
+			(*s)[0] = (c >> 18) + 0xF0;
+			(*s)[1] = (c >> 12) & 0x3F;
+			(*s)[2] = ((c >> 6) & 0x3F) + 0x80;
+			(*s)[3] = (c & 0x3F) + 0x80;
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/16 14:12:11 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/01/17 15:02:14 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int				check_wchar(wchar_t c)
 {
 	if (c <= 0x10FFFF)
 	{
-	    if (c <= 0x7F)
-	        return (1);
-	    else if (c < 0x7FF)
-	        return (2);
-	    else if (c < 0xFFFF)
-	        return (3);
-	    else
-	        return (3);
+		if (c <= 0x7F)
+			return (1);
+		else if (c < 0x7FF)
+			return (2);
+		else if (c < 0xFFFF)
+			return (3);
+		else
+			return (3);
 	}
 	return (-1);
 }
