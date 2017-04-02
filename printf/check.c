@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:30:34 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/17 15:02:14 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/04/02 18:43:22 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			check_alloc(void *ptr)
 
 int				check_conv(char c)
 {
-	if (ft_strfind("sSpdDioOuUxXcCbBfF%", c) == -1)
+	if (ft_strfind("sSpdDioOuUxXcCbB%", c) == -1)
 		return (0);
 	return (1);
 }

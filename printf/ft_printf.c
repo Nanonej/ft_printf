@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/04/02 16:11:46 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/04/02 18:43:07 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int		buff_conv(t_form *f, char **format)
 {
 	if (fill_opt(f, format))
 	{
-		f->szarg = f->p[ft_strfind("sSpdDioOuUxXcCbBfF%", f->conv)](f);
+		f->szarg = f->p[ft_strfind("sSpdDioOuUxXcCbB%", f->conv)](f);
 		if (f->szarg == -1)
 		{
 			init_clear(&f);

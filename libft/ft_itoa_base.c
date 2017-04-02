@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 18:56:19 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/17 14:33:01 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/04/02 18:35:42 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char			*ft_itoa_base(uintmax_t n, int base, char sign)
 
 	if (n == 0)
 		return (ft_strdup("0"));
+	printf("POUET2\n");
 	dc = 0;
 	i = 1;
 	ft_strcpy(tab, "0123456789abcdef");
@@ -47,5 +48,6 @@ char			*ft_itoa_base(uintmax_t n, int base, char sign)
 	}
 	if (sign)
 		new[0] = '-';
+	printf("POUET3\n");
 	return (new);
 }
