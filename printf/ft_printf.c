@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:39:49 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/16 14:14:10 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/04/02 13:51:27 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,26 @@ static void		buff_until(t_form *f, char **format)
 	free(sub);
 }
 
+static int		only_percent(char *format)
+{
+	size_t	i;
+
+	i = -1;
+	while (ft_iswhitespace(format[++i]))
+		;
+	if (format[i] != '%')
+		return (0);
+	while (ft_iswhitespace(format[++i]))
+		;
+	return (format[i] == '\0' ? 1 : 0);
+}
+
 int				ft_printf(const char *format, ...)
 {
 	int			ret;
 	t_form		*f;
 
-	if (!format)
+	if (!format || only_percent((char *)format))
 		return (-1);
 	f = init_form(f);
 	va_start(f->ap, format);

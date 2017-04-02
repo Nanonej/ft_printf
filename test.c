@@ -6,13 +6,14 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/01/15 18:05:06 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/04/02 15:28:25 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <fcntl.h>
 #include <locale.h>
+#include <limits.h>
 
 // int		main(void)
 // {
@@ -35,8 +36,8 @@
 int		main(void)
 {
 	setlocale(LC_ALL, "en_US");
-	ft_printf("%i\n", -42);
-	printf("%i\n", -42);
+	ft_printf("%hhO, %hhO\n", 0, 256);
+	printf("%hhO, %hhO\n", 0, 256);
 	// char *ptr;
 	//
 	// setlocale(LC_ALL, "en_US");
