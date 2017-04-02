@@ -6,7 +6,7 @@
 /*   By: lchim <lchim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 09:31:28 by lchim             #+#    #+#             */
-/*   Updated: 2017/01/16 14:12:34 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/04/02 15:54:53 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int				ft_conv_o(t_form *f)
 	uintmax_t	nb;
 
 	nb = ft_conv_uintmax(f);
+	if (f->conv == 'o' && nb == 0 && f->hash == 1 && f->prec != 0)
+		f->hash = 0;
 	if (nb == 0 && f->prec == 0)
 		check_alloc((f->arg = ft_strnew(0)));
 	else

@@ -6,7 +6,7 @@
 /*   By: aridolfi <aridolfi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:10:29 by aridolfi          #+#    #+#             */
-/*   Updated: 2017/04/02 15:28:25 by aridolfi         ###   ########.fr       */
+/*   Updated: 2017/04/02 16:02:55 by aridolfi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 int		main(void)
 {
 	setlocale(LC_ALL, "en_US");
-	ft_printf("%hhO, %hhO\n", 0, 256);
-	printf("%hhO, %hhO\n", 0, 256);
+	ft_printf("{%f}{%F}\n", 1.42, 1.42);
+	printf("{%f}{%F}\n", 1.42, 1.42);
 	// char *ptr;
 	//
 	// setlocale(LC_ALL, "en_US");
